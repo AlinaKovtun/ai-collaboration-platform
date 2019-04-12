@@ -13,3 +13,5 @@ console:
 lint:
 	docker-compose run server bundle exec rubocop
 
+bash:
+	docker-compose run server bash

@@ -23,8 +23,10 @@ AI collaboration platform
 ### Run rubocop
 `make lint`
 
-### Connect to running container
-TBD
+### Connect to bash in container
+`make bash`
 
 ### Run specs
-TBD
+`make bash`
+
+`bundle exec rspec ...`
