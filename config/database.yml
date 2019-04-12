@@ -3,7 +3,7 @@
 default: &default
   adapter: postgresql
   username: <%= ENV['POSTGRES_USERNAME'] %>
-  host: <%= ENV['POSTGRES_USERNAME'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 development:
