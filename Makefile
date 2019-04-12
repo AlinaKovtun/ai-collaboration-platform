@@ -2,7 +2,7 @@ build:
 	docker-compose build
 
 start:
-	docker-compose run --include-ports server
+	docker-compose run --service-ports server
 
 stop:
 	docker-compose stop
