@@ -9,8 +9,11 @@ AI collaboration platform
 ### Start environment
 
 `git clone git@github.com:dark-side/ai-collaboration-platform.git`
+
 `cd ai-collaboration-platform`
+
 `make build`
+
 `make start`
 
 
