@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'vendor/**/*'
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
