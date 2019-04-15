@@ -1,8 +1,5 @@
-# class DeviseMailer < Devise::Mailer
-#   helper EmailHelper
-#   layout 'email'
-#   default from: 'no-reply@your-domain.com'
-# end
+# frozen_string_literal: true
+
 class DeviseMailer < Devise::Mailer
   include AbstractController::Callbacks
   before_action :add_inline_attachment!
