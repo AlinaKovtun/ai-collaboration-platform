@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable
   validates :first_name, :last_name, presence: true, length: { maximum: 20 }
   validates :about_me, length: { maximum: 500 }
+
+  has_many :news
 end

@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   shared:
     header:
@@ -41,3 +10,43 @@ en:
       for_entrants: 'For entrants'
       about_us: 'About us'
       contacts: 'Contacts'
+  news:
+    links:
+      edit: 'Edit'
+      delete: 'Delete'
+      read_more: 'Read more'
+      share: 'Share'
+      category: 'Category'
+      written_by: 'Written by'
+    index:
+      university_news: 'University News'
+      recent_news: 'Resent News'
+      continue_reading: 'Continue reading'
+    aside_bar:
+      about_university: 'About our University'
+      life_at_university: 'Life at University'
+      leadership_and_organisation: 'Leadership and Organisation'
+      education: 'Education'
+      students_community: 'Students Community'
+      arts_and_culture: 'Arts and Culture'
+      sports: 'Sports'
+    form:
+      title: 'Title'
+      short_information: 'Short Information'
+      body: 'Body'
+      submit: 'Submit'
+    new:
+      add_news: 'Add News'
+    edit:
+      edit_news: 'Edit News'
+    show:
+      related_news: 'Related News'
+    create:
+      notice: 'The News was successfully created'
+      alert: 'The News wasnt created'
+    destroy:
+      notice: 'The News was successfully deleted'
+      alert: 'The News was not deleted'
+    update:
+      notice: 'The News was successfully updated'
+      alert: 'The News was not updated'

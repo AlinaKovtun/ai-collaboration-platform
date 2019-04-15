@@ -1,0 +1,32 @@
+.container
+  .row.justify-content-center.mt-4
+    .col-lg-7
+      %h3
+        = t ('news.index.recent_news')
+      - @news.each do |news|
+        %hr
+        .row
+          .col-lg-8
+            %h4.m-0.d-inline
+              = news.title
+            %p.m-0.text-right.d-inline
+              - if current_user && current_user == news.user
+                = link_to t('news.links.edit'), edit_news_path(news)
+                |
+                = link_to t('news.links.delete'), news_path(news), { method: :delete }
+            %p.text-dark
+              = news.short_information
+            %p.mb-1
+              = t ('news.links.written_by')
+              %strong.text-dark#name
+                = news.user.first_name
+                = news.user.last_name
+            %h6.m-0.text-dark
+              = link_to t('news.links.read_more'), news_path(news)
+              = fa_icon 'eye', text: '1233', class: 'ml-4'
+              = fa_icon 'share', text: t('news.links.share'), class: 'ml-4'
+              = fa_icon 'tags', text: t('news.links.category'), class: 'ml-4'
+          .col-lg-4
+            .thumbnail
+              %img{ src: 'https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg' }
+    = render 'aside_bar'

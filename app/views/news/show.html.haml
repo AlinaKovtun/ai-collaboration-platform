@@ -1,0 +1,21 @@
+.container
+  %section.mt-4
+    .row.justify-content-center
+      .col-md-8
+        .card-body
+          %h1.display-2.m-0.mb-4.mr-2
+            = @news.title
+          %h3.mb-3
+            = @news.short_information
+          .m-4.user-short-info
+            %img.social-media-icon{ src: 'https://mdbootstrap.com/img/Photos/Avatars/img(28).jpg' }
+            %p.m-0.p-1
+              %b
+                Martha Lores
+            2018 Aug 28
+          .view.overlay.rounded-top
+          %img.img-fluid{ src: 'https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg' }/
+          %h4.text-left.mt-4.mb-2
+            = @news.body.html_safe
+          %br
+      = render 'related_news'

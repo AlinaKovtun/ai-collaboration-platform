@@ -9,6 +9,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 gem 'haml'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -19,6 +22,7 @@ gem 'rails-i18n'
 gem 'redis', '~> 4.0'
 gem 'rubocop'
 gem 'sass-rails', '~> 5.0'
+gem 'tinymce-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
@@ -39,6 +43,7 @@ group :development do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'simplecov', require: false
   gem 'simplecov-json', require: false
