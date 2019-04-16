@@ -3,9 +3,13 @@ AllCops:
     - 'bin/*'
     - 'vendor/**/*'
     - 'db/schema.rb'
-    - 'config/environments/*'
+
 Documentation:
   Enabled: false
 
 Metrics/LineLength:
   Max: 100
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*'
