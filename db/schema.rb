@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2019_05_19_194239) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "email_change_requests", force: :cascade do |t|
+    t.string "email"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["token"], name: "index_email_change_requests_on_token", unique: true
+    t.index ["user_id"], name: "index_email_change_requests_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -127,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_194239) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chats", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "email_change_requests", "users"
   add_foreign_key "events", "users"
   add_foreign_key "news", "categories"
   add_foreign_key "news", "users"

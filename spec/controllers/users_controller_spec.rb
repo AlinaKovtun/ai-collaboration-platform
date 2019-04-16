@@ -16,6 +16,10 @@ RSpec.describe UsersController, type: :controller do
 
   let(:wrong_params) { { avatar: Rack::Test::UploadedFile.new('spec/test_zip.zip', 'image/jpeg') } }
 
+  let(:user) { create(:user) }
+
+  before { sign_in(user) }
+
   before { sign_in user_without_avatar }
 
   describe '#update' do
@@ -35,7 +39,7 @@ RSpec.describe UsersController, type: :controller do
       it 'renders show page' do
         put :update, params: { id: user_without_avatar.id, user: correct_params }
         user_without_avatar.reload
-        expect(response).to render_template('show')
+        expect(response).to redirect_to(user_path(user_without_avatar.id))
       end
 
       it 'is rendering show page and notice that user updated his avatar' do
@@ -57,6 +61,121 @@ RSpec.describe UsersController, type: :controller do
         user_with_avatar.reload
         expect(flash.now[:alert]).to match('Unsuccessful update')
       end
+    end
+  end
+
+  describe '#update first_name, last_name, about_me' do
+    let(:user_params_blank) do
+      {
+        last_name: '',
+        first_name: '',
+        about_me: ''
+      }
+    end
+    it 'params blank' do
+      patch :update, params: { id: user.id, user: user_params_blank }
+      expect(response).to render_template :edit
+    end
+
+    let(:user_params) do
+      {
+        last_name: 'Abdul',
+        first_name: 'Rustam',
+        about_me: 'Studen'
+      }
+    end
+    it 'params valid' do
+      patch :update, params: { id: user.id, user: user_params }
+      expect(response).not_to render_template :edit
+    end
+  end
+
+  describe '#update_password' do
+    context 'valid password' do
+      let(:params1) do
+        {
+          password: 'wordpass1',
+          password_confirmation: 'wordpass1',
+          current_password: (user.password.to_i + 1)
+        }
+      end
+
+      it 'valid current_password' do
+        patch :update_password, params: { user_id: user.id,
+                                          user: params1 }
+        expect(response).to redirect_to user_path(user.id + 1)
+      end
+
+      let(:params2) do
+        {
+          password: 'wordpass1',
+          password_confirmation: 'wordpass1',
+          current_password: '123456'
+        }
+      end
+
+      it 'invalid current_password' do
+        patch :update_password, params: { user_id: user.id,
+                                          user: params2 }
+        expect(response).to render_template :edit_password
+      end
+
+      let(:params3) do
+        {
+          password: 'wordpass1',
+          password_confirmation: 'wordpass1',
+          current_password: ''
+        }
+      end
+
+      it 'blank current_password' do
+        patch :update_password, params: { user_id: user.id,
+                                          user: params3 }
+        expect(response).to render_template :edit_password
+      end
+    end
+
+    let(:params_invalid) do
+      {
+        password: 'wordpa',
+        password_confirmation: 'wordpass1',
+        current_password: user.password
+      }
+    end
+
+    context 'invalid password' do
+      it 'valid current_password' do
+        put :update_password, params: { user_id: user.id,
+                                        user: params_invalid }
+        expect(response).to render_template :edit_password
+      end
+
+      it 'invalid current_password' do
+        put :update_password, params: { user_id: user.id,
+                                        user: params_invalid }
+        expect(response).to render_template :edit_password
+      end
+
+      let(:params_blank) do
+        {
+          password: '',
+          password_confirmation: '',
+          current_password: ''
+        }
+      end
+
+      it 'blanck current_password' do
+        put :update_password, params: { user_id: user.id,
+                                        user: params_blank }
+        expect(response).to render_template :edit_password
+      end
+    end
+  end
+
+  describe '#show' do
+    it 'show user' do
+      get :show, params: { id: user.id }
+      expect(response).to render_template :show
     end
   end
 end

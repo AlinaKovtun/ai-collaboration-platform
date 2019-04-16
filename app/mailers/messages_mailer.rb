@@ -9,4 +9,11 @@ class MessagesMailer < ActionMailer::Base
       subject: 'Contact us'
     )
   end
+
+  def approve_email(user, emailchange)
+    @user = user
+    @token = emailchange.token
+    @new_email = emailchange.email
+    mail(from: 'soft.darkside@gmail.com', to: @user.email, subject: 'You change email')
+  end
 end

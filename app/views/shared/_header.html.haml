@@ -22,10 +22,10 @@
         = t('shared.header.logged_in')
         = succeed '.' do
           %strong
-            = link_to current_user.email, root_path
+            = link_to current_user.email, user_path(current_user.id, locale: I18n.locale)
 
         = link_to t('shared.header.edit_profile'),
-            edit_user_registration_path,
+            edit_user_path(current_user.id, locale: I18n.locale),
             class: 'navbar-link'
         |
         = link_to t('shared.header.logout'),

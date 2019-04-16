@@ -12,14 +12,6 @@ en:
       contacts: 'Contacts'
       create_news: 'Create News'
       events: 'Events'
-  users:
-    user:
-      edit: 'Edit'
-      submit: 'Submit'
-      profile: 'Profile'
-      notice: 'Successful update'
-      alert: 'Unsuccessful update'
-      error: 'Помилка'
   news:
     links:
       edit: 'Edit'
@@ -159,3 +151,34 @@ en:
     destroy:
       notice: 'Comment was successfully deleted'
       alert: 'Comment was not deleted'
+  users:
+    edit:
+      first_name: 'First Name'
+      last_name: 'Last Name'
+      about_me: 'About Me'
+      new_password: 'New Password'
+      new_password_reaped: 'New Password Repeated'
+      current_password: 'Current Password'
+      account_info: 'Account info'
+      email_info: 'Email info'
+      password_info: 'Password info'
+      save: 'Save Change'
+      setting: 'Settings'
+      profile: 'Profile Settings'
+      description: 'Description'
+      password: 'Password'
+      account: 'Account'
+      email: 'Email'
+      profile: 'Profile'
+    user:
+      edit: 'Edit'
+      submit: 'Submit'
+      profile: 'Profile'
+      notice: 'Successful update'
+      alert: 'Unsuccessful update'
+      error: 'Error'
+  emailchange:
+    alert: 'This email is occupation'
+    notice: 'Email change'
+    current_password:
+      alert: 'Current password don`t currect'

@@ -12,9 +12,16 @@ Rails.application.routes.draw do
       resources :comments
     end
     devise_for :users, controllers: { registrations: 'devise_overrides/registrations' }
-    resources :users
     root to: 'news#index'
     resources :categories
     resources :events
+    resources :users do
+      get :update_password
+      patch :update_password
+      get :edit_password
+    end
+
+    get :approve, to: 'email_change_requests#approve'
+    resources :email_change_requests
   end
 end
