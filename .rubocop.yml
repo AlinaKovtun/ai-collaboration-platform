@@ -3,7 +3,7 @@ AllCops:
     - 'bin/*'
     - 'vendor/**/*'
     - 'db/schema.rb'
-
+    - 'config/environments/*'
 Documentation:
   Enabled: false
 
