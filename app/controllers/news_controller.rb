@@ -3,6 +3,7 @@
 class NewsController < ApplicationController
   before_action :find_current_user_news, only: %i[edit update destroy]
   has_scope :by_categories, type: :array
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @categories = Category.all

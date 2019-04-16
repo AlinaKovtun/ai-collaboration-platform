@@ -1,0 +1,28 @@
+.card
+  .card-header
+    %h5.card-title.mb-0
+      = t ('users.edit.email_info')
+  .card-body
+    %form
+    = form_for @email_change_request do |form|
+      .row
+        .col-md-8
+          .form-group
+            %label Email
+            = form.email_field :email,
+                               class: 'form-control'
+            %ol
+              - @email_change_request.errors[:email].each do |msg|
+                %li.text-danger
+                  = msg
+          .form-group
+            %label
+              = t ('users.edit.current_password')
+            = form.password_field :current_password,
+                                  class: 'form-control'
+            %ol.mb-0.mt-1
+              - current_user.errors[:current_password].each do |msg|
+                %li.text-danger
+                  = msg
+      %button.btn.btn-primary{ type: 'submit' }
+        = t ('users.edit.save')
