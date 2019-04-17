@@ -1,7 +1,8 @@
 .container
   .row.justify-content-center
     .col-sm-5.text-center.pt-5
-      %p.h4.mb-2 Log in
+      %p.h4.mb-2
+        Log in
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field.text-left
           = f.label :email
