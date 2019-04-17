@@ -64,9 +64,16 @@ jobs:
               --format progress \
               $TEST_FILES
 
+      - run:
+          name: collect coverage
+          command: bundle exec rake rspec:github_coverage
+
       # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+      - store_artifacts:
+          path: coverage
+          destination: test-coverage
