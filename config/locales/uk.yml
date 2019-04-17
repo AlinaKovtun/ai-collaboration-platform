@@ -1,0 +1,12 @@
+uk:
+  shared:
+    header:
+      logged_in: 'Ви ввійшли як'
+      edit_profile: 'Редагувати профіль'
+      logout: 'Вийти'
+      sign_up: 'Зареєструватись'
+      login: 'Увійти'
+      news: 'Новини'
+      for_entrants: 'Для вступників'
+      about_us: 'Про нас'
+      contacts: 'Контакти'

@@ -1,0 +1,20 @@
+%nav.navbar.fixed-bottom.navbar-expand-sm
+  %ul.navbar-nav
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.news')
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.for_entrants')
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.about_us')
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.contacts')
+  %ul.navbar-nav.ml-auto
+    %li.nav-item
+      %a.nav-link
+        = link_to 'EN', url_for(locale: :en)
+        |
+        = link_to 'UK', url_for(locale: :uk)
