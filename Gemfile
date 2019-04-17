@@ -28,6 +28,7 @@ group :development do
   gem 'haml-rails', '~> 2.0'
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'octokit'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -35,6 +36,8 @@ end
 
 group :test do
   gem 'rspec_junit_formatter'
+  gem 'simplecov', require: false
+  gem 'simplecov-json', require: false
 end
 
 group :production do
