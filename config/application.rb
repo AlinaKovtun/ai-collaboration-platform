@@ -21,4 +21,7 @@ module AiCollaborationPlatform
     config.host = ENV['APP_HOST']
     Rails.application.routes.default_url_options[:host] = ENV['APP_HOST']
   end
+
+  config.host = ENV['APP_HOST']
+  Rails.application.routes.default_url_options[:host] = ENV['APP_HOST']
 end
