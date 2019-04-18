@@ -1,17 +1,23 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.container
+  .row.justify-content-center
+    .col-sm-5.text-center.pt-5
+      %p.h4.mb-2
+        Log in
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field.text-left
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'defaultLoginFormEmail form-control mb-4'
+        .field.text-left
+          = f.label :password
+          %br/
+          = f.password_field :password, autocomplete: 'current-password', class: 'defaultLoginFormPassword form-control mb-4'
+        - if devise_mapping.rememberable?
+          .field.custom-control.custom-checkbox.text-left
+            = f.check_box :remember_me, class: 'defaultLoginFormRemember custom-control-input'
+            = f.label :remember_me, class: 'custom-control-label'
+        .actions
+          = f.submit 'Log in', class: 'btn btn-info btn-block mt-4'
+      %p.mt-4
+        Not a member?
+        = render 'devise/shared/links'
