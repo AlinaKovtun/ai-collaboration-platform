@@ -20,5 +20,6 @@ module AiCollaborationPlatform
 
     config.host = ENV['APP_HOST']
     Rails.application.routes.default_url_options[:host] = ENV['APP_HOST']
+    config.action_mailer.default_url_options = { host: ENV['APP_HOST'], port: ENV['APP_PORT'] }
   end
 end
