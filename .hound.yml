@@ -1,0 +1,11 @@
+golint:
+  enabled: false
+
+swiftlint:
+  enabled: false
+
+coffeescript:
+  enabled: false
+
+rubocop:
+  config_file: .rubocop.yml
