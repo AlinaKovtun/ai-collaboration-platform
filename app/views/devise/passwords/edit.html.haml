@@ -1,0 +1,27 @@
+.container.pt-5
+  .row.justify-content-center.pt-5
+    .col-sm-5.text-center.pt-5
+      %p.h4.mb-2
+        Change your password
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        = f.hidden_field :reset_password_token
+        .field.text-left.pb-2
+          - if @minimum_password_length
+            %p.form-text.m-0
+              New password (#{@minimum_password_length} characters minimum)
+          = f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'defaultRegisterFormPassword form-control', 'aria-describedby': 'defaultRegisterFormPasswordHelpBlock'
+        %ol.mb-0.mt-1
+          - resource.errors[:password].each do |msg|
+            %li.text-danger
+              = msg
+        .field.text-left.pb-2
+          = f.label :password_confirmation, 'Confirm new password'
+          = f.password_field :password_confirmation, autocomplete: 'off', class: 'defaultRegisterFormPassword form-control'
+          %ol.mb-0.mt-1
+            - resource.errors[:password_confirmation].each do |msg|
+              %li.text-danger
+                = msg
+        .actions.pb-2
+          = f.submit 'Change my password', class: 'btn btn-info btn-block'
+      %p.mb-4= render 'devise/shared/links'

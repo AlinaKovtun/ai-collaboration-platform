@@ -1,0 +1,16 @@
+.container.pt-5
+  .row.justify-content-center.pt-5
+    .col-sm-5.text-center.pt-5
+      %p.h4.mb-2
+        Forgot your password?
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        .field.text-left
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'defaultLoginFormEmail form-control mb-4'
+        .actions
+          = f.submit 'Send me reset password instructions', class: 'btn btn-info btn-block mt-4'
+      %p.mt-4
+        Not a member?
+        = render 'devise/shared/links'
