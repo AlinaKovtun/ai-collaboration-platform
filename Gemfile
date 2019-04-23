@@ -6,14 +6,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.2'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'haml'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'material-sass', '4.1.1'
 gem 'pg'
 gem 'rails', '~> 5.2.3'
+gem 'rails-i18n'
 gem 'redis', '~> 4.0'
 gem 'rubocop'
 gem 'sass-rails', '~> 5.0'

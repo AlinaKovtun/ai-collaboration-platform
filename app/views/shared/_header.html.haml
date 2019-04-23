@@ -1,0 +1,38 @@
+%nav.navbar.navbar-expand-sm.bg-light.justify-content-between
+  %ul.navbar-nav
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.news')
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.for_entrants')
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.about_us')
+    %li.nav-item
+      %a.nav-link{ href: '#' }
+        = t('shared.header.contacts')
+  %ul.navbar-nav
+    %li.nav-item
+      - if user_signed_in?
+        = t('shared.header.logged_in')
+        = succeed '.' do
+          %strong
+            = link_to current_user.email, root_path
+
+        = link_to t('shared.header.edit_profile'),
+            edit_user_registration_path,
+            class: 'navbar-link'
+        |
+        = link_to t('shared.header.logout'),
+            destroy_user_session_path,
+            method: :delete, class: 'navbar-link'
+
+      - else
+        = link_to t('shared.header.sign_up'),
+            new_user_registration_path,
+            class: 'navbar-link'
+        |
+        = link_to t('shared.header.login'),
+            new_user_session_path,
+            class: 'navbar-link'

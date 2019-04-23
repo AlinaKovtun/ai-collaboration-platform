@@ -6,5 +6,6 @@ FactoryBot.define do
     last_name { 'last name' }
     sequence(:email) { |n| "email#{n}@example.com" }
     password { '123456a' }
+    confirmed_at { Time.current }
   end
 end
