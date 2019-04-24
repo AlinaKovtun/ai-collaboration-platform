@@ -1,0 +1,27 @@
+.btn{
+  margin-top: 25px;
+  color: #FF4081;
+}
+.btn:hover{
+  color: #FF4081;;
+}
+
+.btn_file{
+  width: 150px;
+  margin-top: 20px;
+  padding-left: 28px;
+  color: transparent;
+}
+
+.btn_file:hover{
+  color: transparent;
+}
+
+input{
+  display: none;
+}
+
+.profile_style{
+  font-size: 1.5rem;
+  font-weight: bold;
+}

@@ -9,4 +9,8 @@ class User < ApplicationRecord
 
   has_many :news
   has_many :events
+
+  def show_avatar
+    avatar? ? avatar.thumb.url : avatar.default_url
+  end
 end

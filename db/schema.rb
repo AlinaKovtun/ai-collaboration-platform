@@ -69,11 +69,22 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.text "short_information"
+    t.bigint "user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.text "about_me"
@@ -86,12 +97,11 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.datetime "remember_created_at"
     t.boolean "approved", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_sent_at"], name: "index_users_on_reset_password_sent_at", unique: true
   end
 
   add_foreign_key "events", "users"
-  add_foreign_key "news", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "news", "users"
 end

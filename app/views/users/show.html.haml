@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-12
+      .card
+        .card-body
+          .card-title.mb-4
+            .d-flex.justify-content-start
+              .image-container
+                %img.img-thumbnail#imgProfile{ src: current_user.show_avatar, style: "width: 150px; height: 150px" , alt: "Avatar" }/
+                %br
+                  = link_to "Update", edit_user_path(current_user.id), method: :get , class: 'btn'
+              .userData.ml-3
+                %h2.d-block.profile_style
+                  %a Profile

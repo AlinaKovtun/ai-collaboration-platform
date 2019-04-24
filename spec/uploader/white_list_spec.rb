@@ -12,7 +12,7 @@ describe AvatarUploader do
 
   before do
     AvatarUploader.enable_processing = true
-    File.open('spec/test3.png') { |f| uploader.store!(f) }
+    File.open('spec/test3.jpeg') { |f| uploader.store!(f) }
   end
 
   after do
@@ -27,6 +27,6 @@ describe AvatarUploader do
   end
 
   it 'has the correct format' do
-    expect(uploader).to be_format('PNG')
+    expect(uploader).to be_format('JPEG')
   end
 end
