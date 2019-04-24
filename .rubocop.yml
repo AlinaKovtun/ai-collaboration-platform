@@ -13,4 +13,4 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
-    - 'spec/**/*'
+    - 'spec/**/*.rb'

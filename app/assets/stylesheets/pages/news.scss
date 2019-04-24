@@ -1,0 +1,56 @@
+* {
+  color: $black;
+  font-family: $main-font;
+  font-size: 14px;
+}
+
+.card-comments img {
+  width: 4rem;
+}
+
+.thumbnail {
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+  width: 140px;
+
+  img {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+  }
+}
+
+img .portrait {
+  height: auto;
+  width: 100%;
+}
+
+.banner {
+  background-color: $banner-color;
+  height: 300px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.aside-bar {
+  position: fixed;
+}
+
+.social-media-icon {
+  border-radius: 50px;
+  float: left;
+  margin-right: 5px;
+  width: 50px;
+}
+
+.user-short-info {
+  max-width: 200px;
+}
+
+.img-comment {
+  width: 70px;
+}

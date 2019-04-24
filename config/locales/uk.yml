@@ -10,3 +10,43 @@ uk:
       for_entrants: 'Для вступників'
       about_us: 'Про нас'
       contacts: 'Контакти'
+  news:
+    links:
+      edit: 'Редагувати'
+      delete: 'Видалити'
+      read_more: 'Читати далі'
+      share: 'Поділитись'
+      category: 'Категорія'
+      written_by: 'Створено користувачем'
+    index:
+      university_news: 'Новини Університету'
+      recent_news: 'Недавні Новини'
+      continue_reading: 'Читати далі...'
+    aside_bar:
+      about_university: 'Про наш Університет'
+      life_at_university: 'Життя в Університеті'
+      leadership_and_organisation: 'Лідерство і Організація'
+      education: 'Навчання'
+      students_community: 'Студентська спільнота'
+      arts_and_culture: 'Мистецтво та Культура'
+      sports: 'Спорт'
+    form:
+      title: 'Заголовок'
+      short_information: 'Коротка інформація'
+      body: 'Тіло новини'
+      submit: 'Застосувати'
+    new:
+      add_news: 'Додати Новину'
+    edit:
+      edit_news: 'Редагувати Новину'
+    show:
+      related_news: 'Схожі новини'
+    create:
+      notice: 'Новину успішно створено'
+      alert: 'Новину не створено'
+    destroy:
+      notice: 'Новину успішно видалено'
+      alert: 'Новину не видалено'
+    update:
+      notice: 'Новину успішно оновлено'
+      alert: 'Новину не оновлено'

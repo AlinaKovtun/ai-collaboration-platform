@@ -52,4 +52,11 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'Associations' do
+    it 'has_many news' do
+      association = described_class.reflect_on_association(:news)
+      expect(association.macro).to eq :has_many
+    end
+  end
 end
