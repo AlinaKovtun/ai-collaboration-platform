@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-12
+      .card
+        .card-body
+          .card-title.mb-4
+            .d-flex.justify-content-start
+              .image-container
+                %img#imgProfile.img-thumbnail{src: current_user.avatar? ? current_user.avatar.thumb.url : "http://placehold.it/150x150", style: "width: 150px; height: 150px" , alt: "Avatar"}/
+                %br
+                  = link_to "Update Avatar", edit_user_path(current_user.id), method: :get , class: 'btn'
+              .userData.ml-3
+                %h2.d-block{style: "font-size: 1.5rem; font-weight: bold"}
+                  %a Profile

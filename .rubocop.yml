@@ -9,8 +9,18 @@ Documentation:
 
 Metrics/LineLength:
   Max: 100
+  Exclude:
+    - 'db/migrate/*'
 
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
     - 'spec/**/*.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
