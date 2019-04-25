@@ -6,14 +6,14 @@
   color: #FF4081;;
 }
 
-.btn_file{
+.btn-file{
   width: 150px;
   margin-top: 20px;
   padding-left: 28px;
   color: transparent;
 }
 
-.btn_file:hover{
+.btn-file:hover{
   color: transparent;
 }
 
@@ -21,7 +21,7 @@ input{
   display: none;
 }
 
-.profile_style{
+.profile-style{
   font-size: 1.5rem;
   font-weight: bold;
 }

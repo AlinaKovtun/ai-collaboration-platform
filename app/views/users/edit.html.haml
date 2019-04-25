@@ -9,9 +9,9 @@
                 .image-container
                   %img.user-img{ src: current_user.show_avatar, alt: "Avatar" }
                   %br
-                    = form.file_field :avatar, class: 'btn btn_file'
+                    = form.file_field :avatar, class: 'btn btn-file'
                   %br
                     = form.submit 'Update Profile', class: 'btn'
                 .userData.ml-3
-                  %h2.d-block.profile_style
+                  %h2.d-block.profile-style
                     %a Profile
