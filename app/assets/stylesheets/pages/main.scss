@@ -1,32 +1,33 @@
-.btn{
+.btn {
+  color: #ff4081;
   margin-top: 25px;
-  color: #FF4081;
-}
-.btn:hover{
-  color: #FF4081;;
 }
 
-.btn-file{
-  width: 150px;
+.btn:hover {
+  color: #ff4081;;
+}
+
+.btn-file {
+  color: transparent;
   margin-top: 20px;
   padding-left: 28px;
+  width: 150px;
+}
+
+.btn-file:hover {
   color: transparent;
 }
 
-.btn-file:hover{
-  color: transparent;
-}
-
-input{
+input {
   display: none;
 }
 
-.profile-style{
+.profile-style {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.user-img{
-  width: 150px;
+.user-img {
   height: 150px;
+  width: 150px;
 }
