@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def profile; end
-
   def edit; end
 
   def show; end

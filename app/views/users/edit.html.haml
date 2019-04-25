@@ -7,7 +7,7 @@
             .card-title.mb-4
               .d-flex.justify-content-start
                 .image-container
-                  %img.user-img{ src: current_user.show_avatar, alt: "Avatar" }
+                  = image_tag show_avatar, alt: 'Avatar' , class: 'user-img'
                   %br
                     = form.file_field :avatar, class: 'btn btn-file'
                   %br
