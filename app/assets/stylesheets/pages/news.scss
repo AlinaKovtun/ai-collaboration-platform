@@ -13,27 +13,35 @@
 .thumbnail {
 =======
 * {
-  color: black;
-  font-family: main-font;
+  color: $black;
+  font-family: $main-font;
   font-size: 14px;
 }
 
- .card-comments img {
+.card-comments img {
   width: 4rem;
 }
 
+<<<<<<< HEAD
  .thumbnail {
 >>>>>>> fixing news.scss
+=======
+.thumbnail {
+>>>>>>> view and stylesheets fix
   height: 120px;
   overflow: hidden;
   position: relative;
   width: 140px;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   img {
 =======
    img {
 >>>>>>> fixing news.scss
+=======
+  img {
+>>>>>>> view and stylesheets fix
     height: 100%;
     left: 50%;
     position: absolute;
@@ -44,19 +52,27 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 img .portrait {
 =======
  img .portrait {
 >>>>>>> fixing news.scss
+=======
+img .portrait {
+>>>>>>> view and stylesheets fix
   height: auto;
   width: 100%;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .banner {
   background-color: $banner-color;
 =======
  .banner {
+=======
+.banner {
+>>>>>>> view and stylesheets fix
   background-color: banner-color;
 >>>>>>> fixing news.scss
   height: 300px;
@@ -64,6 +80,7 @@ img .portrait {
   width: 90%;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .aside-bar {
   position: fixed;
@@ -77,12 +94,20 @@ img .portrait {
 
  .social-media-icon {
 >>>>>>> fixing news.scss
+=======
+.aside-bar {
+  position: fixed;
+}
+
+.social-media-icon {
+>>>>>>> view and stylesheets fix
   border-radius: 50px;
   float: left;
   margin-right: 5px;
   width: 50px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .user-short-info {
   max-width: 200px;
@@ -99,10 +124,13 @@ img .portrait {
 >>>>>>> fixed views, tests, rubocop
 =======
  .user-short-info {
+=======
+.user-short-info {
+>>>>>>> view and stylesheets fix
   max-width: 200px;
 }
 
- .img-comment {
+.img-comment {
   width: 70px;
 }
 >>>>>>> fixing news.scss

@@ -25,3 +25,8 @@ input{
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.user-img{
+  width: 150px;
+  height: 150px;
+}

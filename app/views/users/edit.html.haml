@@ -7,7 +7,7 @@
             .card-title.mb-4
               .d-flex.justify-content-start
                 .image-container
-                  %img.img-thumbnail#imgProfile{ src: current_user.show_avatar, style: "width: 150px; height: 150px" , alt: "Avatar" }/
+                  %img.user-img{ src: current_user.show_avatar, alt: "Avatar" }
                   %br
                     = form.file_field :avatar, class: 'btn btn_file'
                   %br
