@@ -1,0 +1,14 @@
+= form_for(@category) do |f|
+  %ul
+    - @category.errors.full_messages.each do |error|
+      %li= error
+  %p
+    = t('categories.form.name')
+    %br/
+    = f.text_field :name, class: 'form-control'
+  %p
+    = t('categories.form.description')
+    %br/
+    = f.text_area :description, class: 'form-control'
+  %button.btn.btn-primary{ type: "f.submit" }
+    = t('categories.form.button')

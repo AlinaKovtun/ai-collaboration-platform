@@ -1,0 +1,12 @@
+.container
+  %h1
+    = t ('categories.index.headline_index')
+  %ul.list-group{ id: :category }
+    - @categories.each do |category|
+      %li.list-group-item
+        .category.text-green
+          = link_to category.name, category_path(category)
+        = link_to t('categories.links.delete'), category_path(category), method: :delete
+        = link_to t('categories.links.edit'), edit_category_path(category)
+  %button.btn.btn-primary
+    = link_to t('categories.links.create'), new_category_path

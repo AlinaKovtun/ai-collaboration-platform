@@ -50,3 +50,27 @@ en:
     update:
       notice: 'The News was successfully updated'
       alert: 'The News was not updated'
+  categories:
+    new:
+      headline: 'Create new category'
+    form:
+      button: 'Create'
+      name: 'Name'
+      description: 'Description'
+    links:
+      edit: 'Edit Category'
+      delete: 'Delete Category'
+      create: 'Create Category'
+    index:
+      headline_index: 'Categories'
+      headline_edit: 'Edit Category'
+    create:
+      notice: 'Category was successfully created'
+      alert: 'Category wasnt created'
+    destroy:
+      notice: 'Category was successfully deleted'
+      alert: 'Category was not deleted'
+    update:
+      notice: 'Category was successfully updated'
+      alert: 'Category was not updated'
+
