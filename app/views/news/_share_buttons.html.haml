@@ -1,0 +1,11 @@
+= link_to fa_icon('facebook-square'),
+"https://www.facebook.com/sharer/sharer.php?u=#{news.title}&quote=#{news.title}",
+class: 'social-icon popup ml-2',
+'data-width': 600,
+'data-height': 400
+
+= link_to fa_icon('twitter-square'),
+"http://twitter.com/share?text=#{news.title}&url=#{news_url(news)}",
+class: 'social-icon popup ml-1',
+'data-width': 600,
+'data-height': 400
