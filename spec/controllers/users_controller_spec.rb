@@ -14,12 +14,14 @@ RSpec.describe UsersController, type: :controller do
       user.reload
       expect(response).to redirect_to(user_path(user.id))
     end
+
     it 'is updates avatar whith with current avatar' do
       put :update, params: { id: user1.id, user: params }
       user.reload
       expect(user.avatar).not_to be_nil
     end
-    it 'exist when user did not upload avatar ' do
+
+    it 'is checks if user have a default avatar' do
       put :update, params: { id: user.id, user: params }
       user.reload
       expect(user.avatar).not_to be_nil
