@@ -1,0 +1,8 @@
+---
+:concurrency: 5
+:queues:
+  - default
+  - mailers
+
+  - dark_side_default
+  - dark_side_mailers

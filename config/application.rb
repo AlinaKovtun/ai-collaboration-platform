@@ -23,5 +23,7 @@ module AiCollaborationPlatform
     config.action_mailer.default_url_options = { host: ENV['APP_HOST'], port: ENV['APP_PORT'] }
     config.i18n.available_locales = %i[en uk]
     config.i18n.default_locale = :en
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
