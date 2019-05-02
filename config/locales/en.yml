@@ -74,4 +74,19 @@ en:
     update:
       notice: 'Category was successfully updated'
       alert: 'Category was not updated'
-
+  contacts:
+    information:
+      our_contacts: 'Our contacts'
+      address: 'Address:'
+      telephone: 'Telephone:'
+      phone_number: '+38 000 000 000'
+      location: '5, Pasternak St.'
+      contact_us: 'Contact us with email'
+    placeholder:
+      email: 'Your email'
+      name: 'Your name'
+      message: 'Type your message'
+    send_message: 'Send message'
+  contact_us:
+    notice: 'Email was successfully sent'
+    contact_form: 'Contact us'

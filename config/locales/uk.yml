@@ -74,3 +74,19 @@ uk:
     update:
       notice: 'Категорію успішно оновлено'
       alert: 'Категорію не оновлено'
+  contacts:
+    information:
+      our_contacts: 'Наші контакти'
+      address: 'Адресса:'
+      telephone: 'Телефон:'
+      phone_number: '+38 000 000 000'
+      location: 'вул. Пастернака, 5'
+      contact_us: 'Напишіть нам на пошту'
+    placeholder:
+      email: 'Ваша пошта'
+      name: "Ваше ім'я"
+      message: 'Ваше повідомлення'
+    send_message: 'Надіслати повідомлення'
+  contact_us:
+    notice: 'Повідомлення успішно відправлено'
+    contact_form: 'Напишіть нам'

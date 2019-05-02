@@ -1,0 +1,41 @@
+.container.mt-5
+  .row
+    .col-lg-5
+      %h1.mb-4
+        = t('contacts.information.our_contacts')
+      %p
+        %b
+          = t('contacts.information.telephone')
+        = t('contacts.information.phone_number')
+      %p
+        %b
+          = t('contacts.information.address')
+        = t('contacts.information.location')
+    .col-lg-7
+      .contact-container
+        = form_for @message, url: contact_us_url, html: { class: 'contact' } do |form|
+          %h4
+            = t('contact_us.contact_form')
+          %fieldset
+            = form.text_field :email, { class: 'contact-input form-control',
+            placeholder: t('contacts.placeholder.email') }
+          %ul
+            - @message.errors[:email].each do |msg|
+              %li.text-danger
+                = msg
+          %fieldset
+            = form.text_field :author_name, { class: 'contact-input form-control',
+            placeholder: t('contacts.placeholder.name') }
+          %ul
+            - @message.errors[:author_name].each do |msg|
+              %li.text-danger
+                = msg
+          %fieldset
+            = form.text_area :body, { class: 'contact-textarea form-control',
+            placeholder: t('contacts.placeholder.message') }
+          %ul
+            - @message.errors[:body].each do |msg|
+              %li.text-danger
+                = msg
+          %fieldset
+            = form.submit t('contacts.send_message'), class: 'input-submit'
