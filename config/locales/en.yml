@@ -32,6 +32,7 @@ en:
       university_news: 'University News'
       recent_news: 'Resent News'
       continue_reading: 'Continue reading'
+      alert: 'Nothing was found'
     aside_bar:
       about_university: 'About our University'
       life_at_university: 'Life at University'
@@ -61,6 +62,10 @@ en:
     update:
       notice: 'The News was successfully updated'
       alert: 'The News was not updated'
+    selector:
+      button: 'Filter'
+    search:
+      field: 'Search here'
   categories:
     new:
       headline: 'Create new category'

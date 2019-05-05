@@ -6,6 +6,7 @@ FactoryBot.define do
     body { 'body' }
     short_information { 'short_information' }
     approved { true }
+    category
     user
   end
 end

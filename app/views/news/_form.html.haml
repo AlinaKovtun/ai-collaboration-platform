@@ -16,6 +16,13 @@
       %li.text-danger
         = msg
   %p
+    = form.collection_select(:category_id, Category.all, :id, :name,
+    {prompt: 'Select news category'})
+  %ol
+    - @news.errors[:category_id].each do |msg|
+      %li.text-danger
+        = msg
+  %p
     = t('news.form.body')
   %p.text-left.h5
     = form.text_area :body, { class: 'form-input tinymce', rows: 12 }

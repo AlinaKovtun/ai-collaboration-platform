@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe NewsController, type: :controller do
-  let(:params) { attributes_for(:news) }
+  let(:params) { attributes_for(:news, category_id: category.id) }
   let(:invalid_params) { attributes_for(:news, title: 'a' * 101) }
   let(:news) { create(:news) }
+  let(:category) { create(:category) }
 
   before { sign_in(news.user) }
 
@@ -43,7 +44,12 @@ RSpec.describe NewsController, type: :controller do
     context 'when params is valid' do
       it 'creates a new news' do
         post :create, params: { news: params }
-        expect(News.exists?(title: params[:title])).to be_truthy
+        expect(News.exists?(title: params[:title])).to be true
+      end
+
+      it 'assigns flash message' do
+        post :create, params: { news: params }
+        expect(flash[:notice]).to eq('The News was successfully created')
       end
     end
 

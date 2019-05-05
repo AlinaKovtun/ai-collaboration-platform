@@ -14,6 +14,7 @@ gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 gem 'haml'
+gem 'has_scope', '~> 0.7.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'material-sass', '4.1.1'
@@ -30,6 +31,7 @@ gem 'sidekiq'
 gem 'tinymce-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate', '~> 3.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
