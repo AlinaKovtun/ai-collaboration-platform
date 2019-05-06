@@ -79,6 +79,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     devise (4.6.2)
       bcrypt (~> 3.0)
@@ -86,6 +87,9 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-async (1.0.0)
+      activejob (>= 5.0)
+      devise (>= 4.0)
     diff-lcs (1.3)
     docile (1.3.1)
     equatable (0.5.0)
@@ -174,6 +178,8 @@ GEM
     psych (3.1.0)
     public_suffix (3.0.3)
     rack (2.0.7)
+    rack-protection (2.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -213,6 +219,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.0)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -273,6 +281,11 @@ GEM
     sexp_processor (4.12.0)
     shoulda-matchers (4.0.1)
       activesupport (>= 4.2.0)
+    sidekiq (5.2.7)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -341,6 +354,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  devise-async
   factory_bot_rails
   faker!
   font-awesome-rails
@@ -358,11 +372,13 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n
   redis (~> 4.0)
+  redis-namespace
   rspec-rails (~> 3.8)
   rspec_junit_formatter
   rubocop
   sass-rails (~> 5.0)
   shoulda-matchers
+  sidekiq
   simplecov
   simplecov-json
   spring
