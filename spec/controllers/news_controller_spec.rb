@@ -69,6 +69,15 @@ RSpec.describe NewsController, type: :controller do
         expect(response).not_to render_template :show
       end
     end
+
+    context 'when user visits news page' do
+      it 'counts views' do
+        views_before = news.views
+        get :show, params: { id: news.id }
+        news.reload
+        expect(news.views).to eq views_before + 1
+      end
+    end
   end
 
   describe '#update' do
