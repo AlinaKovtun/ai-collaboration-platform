@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_081542) do
+ActiveRecord::Schema.define(version: 2019_05_07_071955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["user_id"], name: "index_news_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_roles_users_on_role_id"
+    t.index ["user_id"], name: "index_roles_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -105,4 +116,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
   add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
   add_foreign_key "news", "users"
+  add_foreign_key "roles_users", "roles"
+  add_foreign_key "roles_users", "users"
 end
