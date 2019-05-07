@@ -6,8 +6,13 @@ class UsersController < ApplicationController
   def show; end
 
   def update
-    current_user.update(user_params)
-    redirect_to user_path(current_user.id)
+    if current_user.update(user_params)
+      flash.now[:success] = "Avatar updated"
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:danger] = "Wrong format"
+      render 'edit'
+    end
   end
 
   private

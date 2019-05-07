@@ -4,10 +4,11 @@
       .col-12
         .card
           .card-body
+            = render 'form', user: @user
             .card-title.mb-4
               .d-flex.justify-content-start
                 .image-container
-                  = image_tag show_avatar, alt: 'Avatar' , class: 'user-img'
+                  = image_tag user_avatar_url, alt: 'Avatar' , class: 'user-img'
                   %br
                     = form.file_field :avatar, class: 'btn btn-file'
                   %br

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UsersHelper
-  def show_avatar
-    current_user.avatar? ? current_user.avatar.thumb.url : current.avatar.default_url
+  def user_avatar_url
+    current_user.avatar? ? current_user.avatar.thumb.url : current_user.avatar.default_url
   end
 end

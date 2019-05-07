@@ -8,7 +8,10 @@ describe AvatarUploader do
   include CarrierWave::Test::Matchers
 
   let(:user) { create(:user) }
+
   let(:uploader) { AvatarUploader.new(user, :avatar) }
+
+  let(:uploader_uncorrent_format) { AvatarUploader.new(user, :avatar) }
 
   before do
     AvatarUploader.enable_processing = true

@@ -4,27 +4,44 @@ require 'rails_helper'
 require 'factory_bot'
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) { create(:user) }
-  let(:user1) { create(:user, avatar: AvatarUploader.new(Rails.root.join('spec/test3.jpeg'))) }
-  let(:params) { { avatar: AvatarUploader.new(Rails.root.join('spec/test1.jpg')) } }
-  before { sign_in user }
+  let(:user_without_avatar) { create(:user) }
+
+  let(:user_with_avatar) { create(:user, avatar: AvatarUploader.new(Rails.root.join('spec/test3.jpeg'))) }
+
+  let(:user_with_wrong_avatar) { create(:user, avatar: AvatarUploader.new(Rails.root.join('spec/test_zip.zip'))) }
+
+  let(:default_params) { { avatar: AvatarUploader.new(Rails.root.join('app/assets/images/default.png')) } }
+
+  let(:correct_params) { { avatar: AvatarUploader.new(Rails.root.join('spec/test1.jpg')) } }
+
+  let(:wrong_params) { { avatar: AvatarUploader.new(Rails.root.join('spec/test_zip.zip')) } }
+
+  before { sign_in user_without_avatar }
+
   describe '#update' do
-    it 'is updates avatar whith with default avatar' do
-      put :update, params: { id: user.id, user: params }
-      user.reload
-      expect(response).to redirect_to(user_path(user.id))
+    it 'is updates avatar for user without avatar' do
+      put :update, params: { id: user_without_avatar.id, user: correct_params }
+      user_without_avatar.reload
+      expect(response).to redirect_to(user_path(user_without_avatar.id))
     end
 
-    it 'is updates avatar whith with current avatar' do
-      put :update, params: { id: user1.id, user: params }
-      user.reload
-      expect(user.avatar).not_to be_nil
+    it 'is updates avatar for user with avatar' do
+      put :update, params: { id: user_with_avatar.id, user: correct_params }
+      user_with_avatar.reload
+      expect(user_with_avatar.avatar).not_to be_nil
     end
+  end
 
-    it 'is checks if user have a default avatar' do
-      put :update, params: { id: user.id, user: params }
-      user.reload
-      expect(user.avatar).not_to be_nil
+  describe '#edit' do
+    it 'is rendering edit page if wrong format for avatar' do
+      put :update, params: { id: user_with_avatar.id, user: correct_params }
+      user_with_avatar.reload
+      expect(flash[:success]).to match('Avatar updated')
+    end
+    it 'is rendering edit page if wrong format for avatar' do
+      put :update, params: { id: user_with_avatar.id, user: wrong_params }
+      user_with_avatar.reload
+      expect(flash.now[:danger]).to match('Wrong format')
     end
   end
 end
