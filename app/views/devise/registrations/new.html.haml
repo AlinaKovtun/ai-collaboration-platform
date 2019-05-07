@@ -21,7 +21,7 @@
         .field.text-left.pb-2
           = f.label :roles
           .controls.row
-            - Role.take(4).each do |role|
+            - Role.visible_to_users.each do |role|
               .col-md-6
                 = check_box_tag 'user[role_ids][]', role.id, @user.role_ids.include?(role.id)
                 = role.name
