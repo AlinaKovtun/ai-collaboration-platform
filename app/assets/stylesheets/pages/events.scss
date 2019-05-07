@@ -1,0 +1,15 @@
+.event-img {
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+  width: 240px;
+
+  img {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+  }
+}

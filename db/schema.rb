@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "event_start"
+    t.datetime "event_end"
+    t.float "cost", default: 0.0
+    t.string "venue"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "title"
     t.text "short_information"
@@ -57,5 +70,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["reset_password_sent_at"], name: "index_users_on_reset_password_sent_at", unique: true
   end
 
+  add_foreign_key "events", "users"
   add_foreign_key "news", "users"
 end

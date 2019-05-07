@@ -1,0 +1,82 @@
+.container
+  %section.mt-4
+    .row.justify-content-center
+      .col-md-8
+        .card-body
+          %h1.display-2.m-0.mb-4.mr-2
+            = @event.title
+          .m-0.text-right.d-inline
+            %p
+              - if current_user && current_user == @event.user
+                = link_to t('news.links.edit'), edit_event_path(@event)
+                |
+                = link_to t('news.links.delete'), event_path(@event), { method: :delete }
+          .row
+            .col-md-4
+              %h4.text-left.mt-2
+                %strong
+                  = t ('events.index.organizer')
+            .col-md-6
+              %h4.text-left.mt-2
+                = @event.user.first_name.html_safe
+                = @event.user.last_name.html_safe
+          - if @event.event_start.to_date == @event.event_end.to_date
+            .row
+              .col-md-4
+                %h4.text-left.mt-2
+                  %strong
+                    = t ('events.index.date')
+              .col-md-6
+                %h4.text-left.mt-2
+                  = @event.event_start.strftime('%d %b %Y')
+            .row
+              .col-md-4
+                %h4.text-left.mt-2
+                  %strong
+                    = t ('events.index.time')
+              .col-md-6
+                %h4.text-left.mt-2
+                  = @event.event_start.strftime('%H:%M')
+                  = t ('events.index.sign')
+                  = @event.event_end.strftime('%H:%M')
+          - else
+            .row
+              .col-md-4
+                %h4.text-left.mt-2
+                  %strong
+                    = t ('events.index.start')
+              .col-md-6
+                %h4.text-left.mt-2
+                  = @event.event_start.strftime('%d %b %Y %H:%M')
+            .row
+              .col-md-4
+                %h4.text-left.mt-2
+                  %strong
+                    = t ('events.index.end')
+              .col-md-6
+                %h4.text-left.mt-2
+                  = @event.event_end.strftime('%d %b %Y %H:%M')
+          .row
+            .col-md-4
+              %h4.text-left.mt-2
+                %strong
+                  = t ('events.index.venue')
+            .col-md-6
+              %h4.text-left.mt-2
+                = @event.venue.html_safe
+          .row
+            .col-md-4
+              %h4.text-left.mt-2
+                %strong
+                  = t ('events.index.cost')
+            .col-md-6
+              %h4.text-left.mt-2
+                - if @event.cost.zero?
+                  = t ('events.index.free')
+                - else
+                  = @event.cost
+                  = t ('events.show.currency')
+          %h4.text-left.mt-4.mb-4
+            = @event.description.html_safe
+          %br
+      = render 'next_events'

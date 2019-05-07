@@ -1,8 +1,11 @@
-%nav.navbar.fixed-bottom.navbar-expand-sm
+%nav.navbar.navbar-expand-sm.bg-light
   %ul.navbar-nav
     %li.nav-item
       %a.nav-link{ href: '#' }
         = t('shared.header.news')
+    %li.nav-item
+      %a.nav-link{ href: events_path }
+        = t('shared.header.events')
     %li.nav-item
       %a.nav-link{ href: '#' }
         = t('shared.header.for_entrants')

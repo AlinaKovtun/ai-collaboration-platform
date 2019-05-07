@@ -10,13 +10,13 @@
   %body
     = render 'shared/header'
 
-    - if notice.present?
-      %div.notice.alert.alert-info
-        = notice
-    - if alert.present?
-      %div.alert.alert-danger
-        = alert
-
-    = yield
+    .layout
+      - if notice.present?
+        .notice.alert.alert-info
+          = notice
+      - if alert.present?
+        .alert.alert-danger
+          = alert
+      = yield
 
     = render 'shared/footer'
