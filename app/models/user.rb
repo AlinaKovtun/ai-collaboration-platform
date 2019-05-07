@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
+  validate :correct_avatar_type
   devise :database_authenticatable, :registerable, :validatable, :confirmable,
          :recoverable, :rememberable, :async
   validates :first_name, :last_name, presence: true, length: { maximum: 20 }
@@ -9,8 +10,4 @@ class User < ApplicationRecord
 
   has_many :news
   has_many :events
-
-  def show_avatar
-    avatar? ? avatar.thumb.url : avatar.default_url
-  end
 end

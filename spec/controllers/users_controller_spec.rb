@@ -22,7 +22,7 @@ RSpec.describe UsersController, type: :controller do
     it 'is updates avatar for user without avatar' do
       put :update, params: { id: user_without_avatar.id, user: correct_params }
       user_without_avatar.reload
-      expect(response).to redirect_to(user_path(user_without_avatar.id))
+      expect(response).to render_template('show')
     end
 
     it 'is updates avatar for user with avatar' do
@@ -36,12 +36,11 @@ RSpec.describe UsersController, type: :controller do
     it 'is rendering edit page if wrong format for avatar' do
       put :update, params: { id: user_with_avatar.id, user: correct_params }
       user_with_avatar.reload
-      expect(flash[:success]).to match('Avatar updated')
+      expect(flash.now[:notice]).to match('You have updated avatar')
     end
     it 'is rendering edit page if wrong format for avatar' do
       put :update, params: { id: user_with_avatar.id, user: wrong_params }
-      user_with_avatar.reload
-      expect(flash.now[:danger]).to match('Wrong format')
+      expect(flash.now[:alert]).to match('Wrong format')
     end
   end
 end
