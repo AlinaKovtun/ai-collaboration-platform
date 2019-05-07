@@ -10,6 +10,7 @@ en:
       for_entrants: 'For entrants'
       about_us: 'About us'
       contacts: 'Contacts'
+      create_news: 'Create News'
   news:
     links:
       edit: 'Edit'
