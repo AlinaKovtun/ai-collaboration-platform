@@ -17,5 +17,8 @@
           %img.img-fluid{ src: 'https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg' }/
           %h4.text-left.mt-4.mb-2
             = @news.body.html_safe
+          %p.mt-4.text-right
+            = t('news.links.share')
+            = render 'share_buttons', news: @news
           %br
       = render 'related_news'
