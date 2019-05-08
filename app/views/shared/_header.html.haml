@@ -12,6 +12,8 @@
     %li.nav-item
       %a.nav-link{ href: '#' }
         = t('shared.header.contacts')
+    %li.nav-item
+      = link_to t('shared.header.create_news'), new_news_path, class: 'nav-link'
   %ul.navbar-nav
     %li.nav-item
       - if user_signed_in?
