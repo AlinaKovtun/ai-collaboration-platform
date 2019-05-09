@@ -15,16 +15,18 @@ RSpec.describe UsersHelper, type: :helper do
 
   before { sign_in user }
 
-  describe '#user_avatar_url default url' do
-    it 'show default avatar url' do
-      expect(helper.user_avatar_url).to eq(user.avatar.default_url)
+  describe '#user_avatar_url' do
+    context 'default avatar url' do
+      it 'show default avatar url' do
+        expect(helper.user_avatar_url).to eq(user.avatar.default_url)
+      end
     end
-  end
 
-  describe '#user_avatar_url thumb url' do
-    it 'show thumb avatar url' do
-      sign_in user_with_avatar
-      expect(helper.user_avatar_url).to eq(user_with_avatar.avatar.thumb.url)
+    context 'thumb avatar url' do
+      it 'show thumb avatar url' do
+        sign_in user_with_avatar
+        expect(helper.user_avatar_url).to eq(user_with_avatar.avatar.thumb.url)
+      end
     end
   end
 end

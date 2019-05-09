@@ -3,7 +3,7 @@
 require 'simplecov'
 require 'simplecov-json'
 
-SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.start do
   add_filter %r{^/(vendor|config|spec)/}
 end

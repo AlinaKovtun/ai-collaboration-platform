@@ -19,42 +19,45 @@ RSpec.describe UsersController, type: :controller do
   before { sign_in user_without_avatar }
 
   describe '#update' do
-    it 'is updates avatar for user without avatar' do
-      avatar_before = user_without_avatar.avatar
-      put :update, params: { id: user_without_avatar.id, user: correct_params }
-      user_without_avatar.reload
-      expect(user_without_avatar.avatar).not_to eq(avatar_before)
+    context 'correct params' do
+      it 'is updates avatar for user without avatar' do
+        expect do
+          put :update, params: { id: user_without_avatar.id, user: correct_params }
+        end.to change { user_without_avatar.reload.avatar }
+      end
+
+      it 'is updates avatar for user with avatar' do
+        expect do
+          put :update, params: { id: user_with_avatar.id, user: correct_params }
+        end.to change { user_with_avatar.reload.avatar }
+      end
+
+      it 'is updates avatar and rendernig show page' do
+        put :update, params: { id: user_without_avatar.id, user: correct_params }
+        user_without_avatar.reload
+        expect(response).to render_template('show')
+      end
+
+      it 'is rendering show page and notice that user updated his avatar' do
+        put :update, params: { id: user_with_avatar.id, user: correct_params }
+        user_with_avatar.reload
+        expect(flash.now[:notice]).to match('You have updated avatar')
+      end
     end
 
-    it 'is updates avatar for user with avatar' do
-      avatar_before = user_with_avatar.avatar
-      put :update, params: { id: user_with_avatar.id, user: correct_params }
-      user_with_avatar.reload
-      expect(user_with_avatar.avatar).not_to eq(avatar_before)
-    end
+    context 'wrong params' do
+      it 'is rendering edit page if wrong format for avatar' do
+        put :update, params: { id: user_without_avatar.id, user: wrong_params }
+        user_without_avatar.reload
+        expect(response).to render_template('edit')
+      end
 
-    it 'is updates avatar and rendernig show page' do
-      put :update, params: { id: user_without_avatar.id, user: correct_params }
-      user_without_avatar.reload
-      expect(response).to render_template('show')
-    end
-
-    it 'is rendering edit page if wrong format for avatar' do
-      put :update, params: { id: user_without_avatar.id, user: wrong_params }
-      user_without_avatar.reload
-      expect(response).to render_template('edit')
-    end
-
-    it 'is rendering show page and notice that user updated his avatar' do
-      put :update, params: { id: user_with_avatar.id, user: correct_params }
-      user_with_avatar.reload
-      expect(flash.now[:notice]).to match('You have updated avatar')
-    end
-
-    it 'is rendering edit page and alert that user use wrong format for avatar' do
-      put :update, params: { id: user_with_avatar.id, user: wrong_params }
-      user_with_avatar.reload
-      expect(flash.now[:alert]).to match('Wrong format')
+      it 'is rendering edit page and alert that user use wrong format for avatar' do
+        put :update, params: { id: user_with_avatar.id, user: wrong_params }
+        user_with_avatar.reload
+        expect(flash.now[:alert]).to match('You are not allowed to upload \"zip\"' \
+                                      ' files, allowed types: jpg, jpeg, gif, png')
+      end
     end
   end
 end

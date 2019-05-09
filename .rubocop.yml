@@ -24,3 +24,7 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/users_controller_spec.rb'

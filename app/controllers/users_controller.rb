@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       flash.now[:notice] = 'You have updated avatar'
       render 'show'
     else
-      flash.now[:alert] = 'Wrong format'
+      flash.now[:alert] = current_user.errors.messages[:avatar].first
       render 'edit'
     end
   end
