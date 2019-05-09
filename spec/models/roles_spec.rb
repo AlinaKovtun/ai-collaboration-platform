@@ -17,10 +17,8 @@ RSpec.describe Role, type: :model do
   end
 
   describe 'Scope' do
-    before { %w[admin student menthor].each { |r| create(:role, name: r) } }
-    it 'should return 2 roles' do
-      r = Role.visible_to_users
-      expect(r.count).to eq(2)
+    it 'should not include admin role' do
+      expect(Role.visible_to_users).to_not include(Role.where(name: 'admin'))
     end
   end
 end

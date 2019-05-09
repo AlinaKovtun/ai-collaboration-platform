@@ -2,6 +2,10 @@
 
 FactoryBot.define do
   factory :role do
-    name { 'student' }
+    name { 'role' }
+
+    factory %w[admin student menthor teacher expert].each do |role_name|
+      name { role_name }
+    end
   end
 end
