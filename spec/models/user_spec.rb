@@ -46,6 +46,12 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context 'when role_ids is blank' do
+      it 'is valid' do
+        expect(build(:user, role_ids: '')).to be_valid
+      end
+    end
+
     context 'when about_me is largest than 500' do
       it 'is not valid' do
         expect(build(:user, about_me: 'd' * 501)).not_to be_valid
@@ -57,6 +63,10 @@ RSpec.describe User, type: :model do
     it 'has_many news' do
       association = described_class.reflect_on_association(:news)
       expect(association.macro).to eq :has_many
+    end
+    it 'has_and_belongs_to_many news' do
+      association = described_class.reflect_on_association(:roles)
+      expect(association.macro).to eq :has_and_belongs_to_many
     end
   end
 end
