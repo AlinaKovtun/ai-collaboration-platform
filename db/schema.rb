@@ -1,4 +1,3 @@
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -15,38 +14,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "event_start"
-    t.datetime "event_end"
-    t.float "cost", default: 0.0
-    t.string "venue"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
-  create_table "news", force: :cascade do |t|
-    t.string "title"
-    t.text "short_information"
-    t.bigint "user_id"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "views", default: 0
-    t.boolean "approved", default: false
-    t.index ["user_id"], name: "index_news_on_user_id"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +42,19 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "event_start"
+    t.datetime "event_end"
+    t.float "cost", default: 0.0
+    t.string "venue"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "news", force: :cascade do |t|
@@ -111,7 +91,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["reset_password_sent_at"], name: "index_users_on_reset_password_sent_at", unique: true
   end
 
-  add_foreign_key "events", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "events", "users"
   add_foreign_key "news", "users"
 end
