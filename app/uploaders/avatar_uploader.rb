@@ -17,7 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [150, 150]
   end
 
-  # def extension_whitelist
-  #   %w[jpg jpeg gif png]
-  # end
+  def extension_whitelist
+    %w[jpg jpeg gif png]
+  end
 end

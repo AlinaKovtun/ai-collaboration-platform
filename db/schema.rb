@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "title"
     t.text "short_information"
@@ -76,6 +84,8 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "views", default: 0
+    t.boolean "approved", default: false
     t.index ["user_id"], name: "index_news_on_user_id"
   end
 

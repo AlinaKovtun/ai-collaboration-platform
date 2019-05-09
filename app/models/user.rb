@@ -2,7 +2,6 @@
 
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
-  validate :correct_avatar_type
   devise :database_authenticatable, :registerable, :validatable, :confirmable,
          :recoverable, :rememberable, :async
   validates :first_name, :last_name, presence: true, length: { maximum: 20 }

@@ -13,6 +13,8 @@ describe AvatarUploader do
 
   let(:uploader_uncorrent_format) { AvatarUploader.new(user, :avatar) }
 
+  let(:default_url) { '/assets/default.png' }
+
   before do
     AvatarUploader.enable_processing = true
     File.open('spec/test3.jpeg') { |f| uploader.store!(f) }
@@ -31,5 +33,9 @@ describe AvatarUploader do
 
   it 'has the correct format' do
     expect(uploader).to be_format('JPEG')
+  end
+
+  it 'returns the default url' do
+    expect(uploader.default_url).to eq(default_url)
   end
 end
