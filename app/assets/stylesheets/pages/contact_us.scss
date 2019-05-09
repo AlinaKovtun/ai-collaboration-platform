@@ -1,0 +1,48 @@
+.contact-container {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+.contact {
+  background: $contact-background;
+  padding: 25px;
+
+  .input-submit {
+    background: $submit-color;
+    border: 0;
+    color: $white;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 0 5px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .input-submit:hover {
+    background: $submit-hover-color;
+    transition: background-color 0.3s ease-in-out;
+  }
+}
+
+fieldset {
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+.contact-input,
+.contact-textarea {
+  background: $white;
+  border: 1px solid $contact-input-color;
+  margin: 0 0 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.contact-textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}

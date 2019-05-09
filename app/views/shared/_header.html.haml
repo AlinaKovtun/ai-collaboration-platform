@@ -10,8 +10,7 @@
       %a.nav-link{ href: '#' }
         = t('shared.header.about_us')
     %li.nav-item
-      %a.nav-link{ href: '#' }
-        = t('shared.header.contacts')
+      = link_to t('shared.header.contacts'), contact_us_path, class: 'nav-link'
     %li.nav-item
       = link_to t('shared.header.create_news'), new_news_path, class: 'nav-link'
   %ul.navbar-nav
