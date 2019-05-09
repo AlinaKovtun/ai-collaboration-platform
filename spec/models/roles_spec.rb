@@ -10,6 +10,12 @@ RSpec.describe Role, type: :model do
     end
   end
 
+  describe 'Validations' do
+    context 'when name is not unique' do
+      it { should validate_uniqueness_of(:name) }
+    end
+  end
+
   describe 'Scope' do
     before { %w[admin student menthor].each { |r| create(:role, name: r) } }
     it 'should return 2 roles' do
