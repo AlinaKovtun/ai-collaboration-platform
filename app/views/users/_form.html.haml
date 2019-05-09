@@ -1,5 +1,5 @@
 - if current_user.errors.any?
-    %p
+  %p
     = pluralize(current_user.errors.count, "error")
         prohibited this user from being saved:
         %ul
