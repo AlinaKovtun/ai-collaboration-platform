@@ -23,7 +23,7 @@
           .controls.row
             - @visible_roles.each do |role|
               .col-md-6
-                = check_box_tag 'user[role_ids][]', role.id, @user.role_ids.include?(role.id)
+                = check_box_tag 'user[role_ids][]', role.id
                 = role.name
         .field.text-left.pb-2
           = f.label :about_me
