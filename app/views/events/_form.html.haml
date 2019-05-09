@@ -1,0 +1,60 @@
+= form_for @event do |form|
+  %p
+    = t('events.form.title')
+  %p
+    = form.text_field :title, { class: 'form-control' }
+  %ol
+    - @event.errors[:title].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('events.index.start')
+  %p
+    = form.datetime_local_field :event_start, { min: Date.today, class: 'form-control' }
+    %small
+      mm/dd/yyyy hh:mm m
+  %ol
+    - @event.errors[:event_start].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('events.index.end')
+  %p
+    = form.datetime_local_field :event_end, { min: Date.today, class: 'form-control' }
+    %small
+      mm/dd/yyyy hh:mm m
+  %ol
+    - @event.errors[:event_end].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('events.index.venue')
+  %p
+    = form.text_field :venue, { class: 'form-control' }
+  %ol
+    - @event.errors[:venue].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('events.form.cost')
+  %p
+    = form.text_field :cost, { class: 'form-control' }
+  %ol
+    - @event.errors[:cost].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('events.form.description')
+  %p.text-left.h5
+    = form.text_area :description, { class: 'form-input tinymce', rows: 12 }
+  %ol
+    - @event.errors[:description].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    %strong
+      = t('events.form.organizer_msg')
+  %p.text-right
+    = form.submit t('events.form.submit'), class: 'btn btn-outline-dark'
+  %ol.text-left
+

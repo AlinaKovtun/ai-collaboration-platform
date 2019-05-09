@@ -11,6 +11,7 @@ en:
       about_us: 'About us'
       contacts: 'Contacts'
       create_news: 'Create News'
+      events: 'Events'
   news:
     links:
       edit: 'Edit'
@@ -90,3 +91,41 @@ en:
   contact_us:
     notice: 'Email was successfully sent'
     contact_form: 'Contact us'
+  events:
+    index:
+      organizer: 'Organizer'
+      date: 'Event date'
+      time: 'Event time'
+      start: 'Event start'
+      end: 'Event end'
+      venue: 'Venue'
+      cost: 'Event cost'
+      free: 'Free'
+      sign: '-'
+      create: 'Add event'
+      upcoming_events: 'Upcoming events'
+    show:
+      next_events: 'Next events'
+      currency: 'UAH'
+    new:
+      add_event: 'Add Event'
+    edit:
+      edit_event: 'Edit Event'
+    form:
+      title: 'Title'
+      description: 'Description'
+      cost: 'Event cost (optional)'
+      submit: 'Submit'
+      organizer_msg: 'You are the organizer of this event'
+    create:
+      notice: 'The Event was successfully created'
+      alert: 'The Event was not created'
+    destroy:
+      notice: 'The Event was successfully deleted'
+      alert: 'The Event was not deleted'
+    update:
+      notice: 'The Event was successfully updated'
+      alert: 'The Event was not updated'
+    errors:
+      after: 'The end event date must be after the event start date'
+      future: 'The date must be in the future'

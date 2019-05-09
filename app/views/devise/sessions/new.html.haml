@@ -13,9 +13,9 @@
           %br/
           = f.password_field :password, autocomplete: 'current-password', class: 'defaultLoginFormPassword form-control mb-4'
         - if devise_mapping.rememberable?
-          .field.custom-control.custom-checkbox.text-left
-            = f.check_box :remember_me, class: 'defaultLoginFormRemember custom-control-input'
-            = f.label :remember_me, class: 'custom-control-label'
+          .form-check.text-left
+            = f.check_box :remember_me, class: 'form-check-input'
+            = f.label :remember_me, class: 'form-check-label'
         .actions
           = f.submit 'Log in', class: 'btn btn-info btn-block mt-4'
       %p.mt-4
