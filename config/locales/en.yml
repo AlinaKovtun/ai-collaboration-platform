@@ -137,3 +137,19 @@ en:
     errors:
       after: 'The end event date must be after the event start date'
       future: 'The date must be in the future'
+  comments:
+    form:
+      title: 'Comments'
+      submit: 'Submit'
+      comment_placeholder: 'Write new comment here!'
+    comment:
+      reply_placeholder: 'Write reply here!'
+      submit: 'Reply'
+      delete: 'Delete'
+      confirmation: 'Are you sure?'
+    create:
+      notice: 'Comment was successfully created'
+      alert: 'Comment was not created'
+    destroy:
+      notice: 'Comment was successfully deleted'
+      alert: 'Comment was not deleted'

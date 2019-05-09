@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_081542) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
   add_foreign_key "news", "users"
 end

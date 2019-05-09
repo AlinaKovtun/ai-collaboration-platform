@@ -141,3 +141,19 @@ uk:
     errors:
       after: 'Дата закінчення події повинна бути після дати початку події'
       future: 'Дата повинна бути в майбутньому'
+  comments:
+    form:
+      title: 'Коментарі'
+      submit: 'Надіслати'
+      comment_placeholder: 'Текст коментаря!'
+    comment:
+      reply_placeholder: 'Текст відповіді!'
+      submit: 'Відповісти'
+      delete: 'Видалити'
+      confirmation: 'Ви впевнені?'
+    create:
+      notice: 'Коментар створено!'
+      alert: 'Коментар не створено!'
+    destroy:
+      notice: 'Коментар видалено!'
+      alert: 'Коментар не видалено!'
