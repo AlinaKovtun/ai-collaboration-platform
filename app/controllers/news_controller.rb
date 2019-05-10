@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   before_action :find_current_user_news, only: %i[edit update destroy]
 
   def index
-    @news = News.all
+    @news = News.approved.all
   end
 
   def show
