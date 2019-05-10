@@ -10,6 +10,9 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     @news.update_column(:views, @news.views + 1)
+    @commentable = @news
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   def new

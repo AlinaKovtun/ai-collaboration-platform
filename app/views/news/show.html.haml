@@ -22,3 +22,8 @@
             = render 'share_buttons', news: @news
           %br
       = render 'related_news'
+    %ul
+      = render 'comments/form'
+      = render partial: 'comments/comment', collection: @news.comments
+    %br
+    %br
