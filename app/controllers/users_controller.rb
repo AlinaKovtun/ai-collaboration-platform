@@ -7,10 +7,10 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      flash.now[:notice] = 'You have updated avatar'
+      flash.now[:notice] = t('users.user.notice')
       render 'show'
     else
-      flash.now[:alert] = current_user.errors.messages[:avatar].first
+      flash.now[:alert] = t('users.user.alert')
       render 'edit'
     end
   end

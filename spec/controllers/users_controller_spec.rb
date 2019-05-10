@@ -32,7 +32,7 @@ RSpec.describe UsersController, type: :controller do
         end.to change { user_with_avatar.reload.avatar }
       end
 
-      it 'is updates avatar and rendernig show page' do
+      it 'renders show page' do
         put :update, params: { id: user_without_avatar.id, user: correct_params }
         user_without_avatar.reload
         expect(response).to render_template('show')
@@ -41,12 +41,12 @@ RSpec.describe UsersController, type: :controller do
       it 'is rendering show page and notice that user updated his avatar' do
         put :update, params: { id: user_with_avatar.id, user: correct_params }
         user_with_avatar.reload
-        expect(flash.now[:notice]).to match('You have updated avatar')
+        expect(flash.now[:notice]).to match('Successful update')
       end
     end
 
     context 'wrong params' do
-      it 'is rendering edit page if wrong format for avatar' do
+      it 'rendering edit page' do
         put :update, params: { id: user_without_avatar.id, user: wrong_params }
         user_without_avatar.reload
         expect(response).to render_template('edit')
@@ -55,8 +55,7 @@ RSpec.describe UsersController, type: :controller do
       it 'is rendering edit page and alert that user use wrong format for avatar' do
         put :update, params: { id: user_with_avatar.id, user: wrong_params }
         user_with_avatar.reload
-        expect(flash.now[:alert]).to match('You are not allowed to upload \"zip\"' \
-                                      ' files, allowed types: jpg, jpeg, gif, png')
+        expect(flash.now[:alert]).to match('Unsuccessful update')
       end
     end
   end

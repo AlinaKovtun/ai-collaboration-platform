@@ -12,6 +12,17 @@ uk:
       contacts: 'Контакти'
       create_news: 'Створити Новину'
       events: 'Події'
+  users:
+    user:
+      edit: 'Редаугвати'
+      submit: 'Застосувати'
+      profile: 'Профіль'
+      notice: 'Успішно оновлено'
+      alert: 'Не оновлено'
+      error: 'Помилка'
+  errors:
+    messages:
+        extension_whitelist_error: "Ви не можете завантажити файлу типу: %{extension}, дозволені типи файлів: %{allowed_types}"
   news:
     links:
       edit: 'Редагувати'

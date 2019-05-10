@@ -8,7 +8,4 @@
               .image-container
                 = image_tag user_avatar_url, alt: 'Avatar' , class: 'user-img'
                 %br
-                  = link_to "Update", edit_user_path(current_user.id), method: :get , class: 'btn'
-              .userData.ml-3
-                %h2.d-block.profile-style
-                  %a Profile
+                  = link_to t('users.user.edit'), edit_user_path(current_user.id), method: :get , class: 'btn'

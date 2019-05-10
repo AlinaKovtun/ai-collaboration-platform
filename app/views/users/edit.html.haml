@@ -4,6 +4,7 @@
       .col-12
         .card
           .card-body
+            =render 'errors'
             .card-title.mb-4
               .d-flex.justify-content-start
                 .image-container
@@ -11,7 +12,4 @@
                   %br
                     = form.file_field :avatar, class: 'btn btn-file'
                   %br
-                    = form.submit 'Update Profile', class: 'btn'
-                .userData.ml-3
-                  %h2.d-block.profile-style
-                    %a Profile
+                    = form.submit t('users.user.submit'), class: 'btn'

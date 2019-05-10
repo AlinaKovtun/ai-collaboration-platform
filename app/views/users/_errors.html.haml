@@ -1,7 +1,6 @@
 - if current_user.errors.any?
   %p
-  = pluralize(current_user.errors.count, "error")
-    prohibited this user from being saved:
+  = pluralize(current_user.errors.count, t('users.user.error'))
     %ul
     - current_user.errors.full_messages.each do |message|
     %li= message
