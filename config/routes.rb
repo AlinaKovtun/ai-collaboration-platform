@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :comments do
       resources :comments
     end
-    devise_for :users
+    devise_for :users, controllers: { registrations: 'devise_overrides/registrations' }
     resources :users
     root to: 'news#index'
     resources :categories

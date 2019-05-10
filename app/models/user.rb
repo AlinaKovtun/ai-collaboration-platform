@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :about_me, length: { maximum: 500 }
 
   has_many :comments
+  has_and_belongs_to_many :roles
   has_many :news
   has_many :events
 end

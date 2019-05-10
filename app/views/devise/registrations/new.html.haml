@@ -19,6 +19,13 @@
               %li.text-danger
                 = msg
         .field.text-left.pb-2
+          = f.label :roles
+          .controls.row
+            - @visible_roles.each do |role|
+              .col-md-6
+                = check_box_tag 'user[role_ids][]', role.id
+                = role.name
+        .field.text-left.pb-2
           = f.label :about_me
           = f.text_field :about_me, autocomplete: 'about_me', class: 'defaultRegisterFormText form-control'
           %ol.mb-0.mt-1
@@ -50,4 +57,4 @@
                 = msg
         .actions.pb-2
           = f.submit 'Sign up', class: 'btn btn-info btn-block'
-      %p.mb-4= render 'devise/shared/links'
+%p.mb-4= render 'devise/shared/links'
