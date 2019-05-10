@@ -7,4 +7,6 @@ class News < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :body, presence: true
   validates :short_information, presence: true, length: { maximum: 200 }
+
+  scope :approved, -> { where(approved: true) }
 end
