@@ -12,6 +12,14 @@ en:
       contacts: 'Contacts'
       create_news: 'Create News'
       events: 'Events'
+  users:
+    user:
+      edit: 'Edit'
+      submit: 'Submit'
+      profile: 'Profile'
+      notice: 'Successful update'
+      alert: 'Unsuccessful update'
+      error: 'Помилка'
   news:
     links:
       edit: 'Edit'

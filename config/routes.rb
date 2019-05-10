@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'contact_us', to: 'messages#create'
     resources :news
     devise_for :users
+    resources :users
     root to: 'news#index'
     resources :categories
     resources :events
