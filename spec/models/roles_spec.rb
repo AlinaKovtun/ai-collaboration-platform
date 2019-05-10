@@ -17,8 +17,11 @@ RSpec.describe Role, type: :model do
   end
 
   describe 'Scope' do
+    before { create(:admin_role) }
+    before { create(:student_role) }
+
     it 'should not include admin role' do
-      expect(Role.visible_to_users).to_not include(Role.where(name: 'admin'))
+      expect(Role.visible_to_users).not_to include(Role.find_by_name('admin'))
     end
   end
 end
