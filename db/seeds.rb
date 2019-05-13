@@ -9,7 +9,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-%w[student expert menthor teacher admin].each do |role|
+%w[student expert mentor teacher admin].each do |role|
   Role.create!(name: role)
 end
 u = User.create!(first_name: 'Dark',
