@@ -69,4 +69,46 @@ RSpec.describe User, type: :model do
       expect(association.macro).to eq :has_and_belongs_to_many
     end
   end
+
+  describe '#from_omniauth' do
+    let(:auth_hash) do
+      OmniAuth::AuthHash.new(
+        info: {
+          first_name: 'facebook name',
+          last_name: 'facebook last name',
+          email: 'facebook@email.com'
+        }
+      )
+    end
+
+    context 'when user exists' do
+      let(:user) { User.from_omniauth(auth_hash) }
+
+      it 'creates new user' do
+        expect { user }.to change { User.count }.by(1)
+      end
+
+      it 'creates new user with right first_name' do
+        expect(user.first_name).to eq 'facebook name'
+      end
+
+      it 'creates new user with right email' do
+        expect(user.email).to eq 'facebook@email.com'
+      end
+    end
+
+    context 'when user does not exist' do
+      before { create(:user, email: 'facebook@email.com') }
+
+      let(:user) { User.from_omniauth(auth_hash) }
+
+      it 'does not create new user' do
+        expect { user }.to change { User.count }.by(0)
+      end
+
+      it 'does not override present credentials of user' do
+        expect(user.first_name).not_to eq 'facebook name'
+      end
+    end
+  end
 end

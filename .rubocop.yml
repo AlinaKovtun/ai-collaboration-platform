@@ -16,6 +16,7 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
     - 'config/initializers/*'
+    - 'config/**/*'
     - 'spec/**/*.rb'
 
 Metrics/AbcSize:

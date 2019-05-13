@@ -189,3 +189,5 @@ uk:
   passwords:
     password:
       blank: 'Пароль не може бути пустим'
+  links:
+    sign_in_with: 'Увійти за допомогою'

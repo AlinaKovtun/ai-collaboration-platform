@@ -22,7 +22,7 @@ en:
       written_by: 'Written by'
     index:
       university_news: 'University News'
-      recent_news: 'Resent News'
+      recent_news: 'Recent News'
       continue_reading: 'Continue reading'
       alert: 'Nothing was found'
     aside_bar:
@@ -185,3 +185,5 @@ en:
   passwords:
     password:
       blank: 'Can`t be blank'
+  links:
+    sign_in_with: 'Sign in with'

@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     resources :comments do
       resources :comments
     end
-    devise_for :users, controllers: { registrations: 'devise_overrides/registrations' }
+    # devise_for :users, controllers: { registrations: 'devise_overrides/registrations' }
+    devise_for :users, skip: :omniauth_callbacks, controllers:
+      {
+        registrations: 'devise_overrides/registrations'
+      }
+    resources :users
     root to: 'news#index'
     resources :categories
     resources :events
@@ -24,4 +29,9 @@ Rails.application.routes.draw do
     get :approve, to: 'email_change_requests#approve'
     resources :email_change_requests
   end
+
+  devise_for :users, only: :omniauth_callbacks, controllers:
+    {
+      omniauth_callbacks: 'users/omniauth_callbacks'
+    }
 end
