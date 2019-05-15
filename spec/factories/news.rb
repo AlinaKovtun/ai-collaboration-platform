@@ -5,7 +5,6 @@ FactoryBot.define do
     sequence(:title) { |n| "Title #{n}" }
     body { 'body' }
     short_information { 'short_information' }
-    approved { true }
     category
     user
   end
