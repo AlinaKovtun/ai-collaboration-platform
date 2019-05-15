@@ -12,8 +12,9 @@
 %w[student expert mentor teacher admin].each do |role|
   Role.create!(name: role)
 end
-u = User.create!(first_name: 'Dark',
-                 last_name: 'Side',
-                 email: ENV['GMAIL_USERNAME'],
-                 password: ENV['GMAIL_PASSWORD']).confirm
-u.roles << Role.find_by_name('admin')
+User.create!(first_name: 'Dark',
+             last_name: 'Side',
+             email: ENV['GMAIL_USERNAME'],
+             password: ENV['GMAIL_PASSWORD']).confirm
+u = User.last
+u.roles << Role.last

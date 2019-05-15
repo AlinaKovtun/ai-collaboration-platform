@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 RailsAdmin.config do |config|
-  config.authenticate_with do
-    warden.authenticate! scope: :user
+  config.authorize_with do
+    authenticate_or_request_with_http_basic('Login Required') do |email, password|
+      email == ENV['GMAIL_USERNAME'] && password == ENV['GMAIL_PASSWORD']
+    end
   end
   config.current_user_method(&:current_user)
 
