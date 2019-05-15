@@ -10,10 +10,9 @@ class News < ApplicationRecord
   validates :body, presence: true
   validates :short_information, presence: true, length: { maximum: 200 }
 
+  scope :ordered_by_views, -> { order(views: :desc) }
   scope :by_categories, ->(category) { where(category: category) }
-  default_scope { order(created_at: :desc) }
+  scope :ordered, -> { order(created_at: :desc) }
 
-  scope :title_search, lambda { |title_search|
-    where('title ILIKE lower(?)', "%#{title_search}%")
-  }
+  scope :search, ->(search) { where('title ILIKE lower(?)', "%#{search}%") }
 end

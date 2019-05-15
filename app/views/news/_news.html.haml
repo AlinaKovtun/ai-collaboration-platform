@@ -1,0 +1,26 @@
+- @news.each do |news|
+  %hr
+  .row
+    .col-lg-8
+      %h4.m-0.d-inline
+        = news.title
+      %p.m-0.text-right.d-inline
+        - if current_user && current_user == news.user
+          = link_to t('news.links.edit'), edit_news_path(news)
+          |
+          = link_to t('news.links.delete'), news_path(news), { method: :delete }
+      %p.text-dark
+        = news.short_information
+      %p.mb-1
+        = t ('news.links.written_by')
+        %strong.text-dark#name
+          = news.user.first_name
+          = news.user.last_name
+      %h5.m-0.text-dark
+        = link_to t('news.links.read_more'), news_path(news)
+        = fa_icon 'eye', text: news.views, class: 'ml-4'
+        = fa_icon 'tags', text: t('news.links.category'), class: 'ml-4'
+        = link_to news.category.name
+    .col-lg-4
+      .thumbnail
+        = image_tag news.image_url(:thumb)
