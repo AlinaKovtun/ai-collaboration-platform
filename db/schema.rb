@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "aasm_state"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "views", default: 0
-    t.boolean "approved", default: false
+    t.string "aasm_state"
     t.string "image"
     t.integer "category_id"
     t.index ["created_at"], name: "index_news_on_created_at"

@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
+gem 'aasm'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
