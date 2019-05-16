@@ -45,6 +45,7 @@ en:
       short_information: 'Short Information'
       body: 'Body'
       submit: 'Submit'
+      image: 'Image'
     new:
       add_news: 'Add News'
     edit:

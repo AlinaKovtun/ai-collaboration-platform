@@ -27,5 +27,5 @@
               = fa_icon 'tags', text: t('news.links.category'), class: 'ml-4'
           .col-lg-4
             .thumbnail
-              %img{ src: 'https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg' }
+              = image_tag news.image_url(:thumb)
     = render 'aside_bar'

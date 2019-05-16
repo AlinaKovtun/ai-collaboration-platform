@@ -12,7 +12,7 @@
   height: 120px;
   overflow: hidden;
   position: relative;
-  width: 140px;
+  width: 120px;
 
   img {
     height: 100%;
@@ -21,6 +21,31 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: auto;
+  }
+}
+
+.thumbnail-news {
+  height: 300px;
+  margin: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.thumbnail-social-icon {
+  border-radius: 50px;
+  float: left;
+  height: 50px;
+  margin-right: 5px;
+  overflow: hidden;
+  width: 50px;
+
+  img {
+    display: block;
+    width: 100%;
   }
 }
 

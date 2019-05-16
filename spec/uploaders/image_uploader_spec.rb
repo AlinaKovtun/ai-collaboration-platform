@@ -4,24 +4,24 @@ require 'spec_helper'
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 
-describe AvatarUploader do
+describe ImageUploader do
   include CarrierWave::Test::Matchers
 
   let(:user) { create(:user) }
 
-  let(:uploader) { AvatarUploader.new(user, :avatar) }
+  let(:uploader) { ImageUploader.new(user, :avatar) }
 
-  let(:uploader_uncorrent_format) { AvatarUploader.new(user, :avatar) }
+  let(:uploader_uncorrent_format) { ImageUploader.new(user, :avatar) }
 
   let(:default_url) { '/assets/default.png' }
 
   before do
-    AvatarUploader.enable_processing = true
+    ImageUploader.enable_processing = true
     File.open('spec/test3.jpeg') { |f| uploader.store!(f) }
   end
 
   after do
-    AvatarUploader.enable_processing = false
+    ImageUploader.enable_processing = false
     uploader.remove!
   end
 

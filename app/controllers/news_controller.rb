@@ -9,7 +9,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
-    @news.update_column(:views, @news.views + 1)
+    @news.increment!(:views)
     @commentable = @news
     @comments = @commentable.comments
     @comment = Comment.new
@@ -50,7 +50,7 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:title, :short_information, :body)
+    params.require(:news).permit(:title, :short_information, :body, :image)
   end
 
   def find_current_user_news
