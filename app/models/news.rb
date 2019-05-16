@@ -21,13 +21,33 @@ class News < ApplicationRecord
   scope :title_search, lambda { |title_search|
     where('title ILIKE lower(?)', "%#{title_search}%")
   }
-  
+
   aasm do
     state :unapproved, initial: true
     state :approved
     state :rejected
     state :published
     state :archived
+
+    event :approve do
+      transitions from: [:unapproved], to: :approved
+    end
+    event :reject do
+      transitions from: [:unapproved], to: :rejected
+    end
+    event :reverify do
+      transitions from: [:approved], to: :unapproved
+      transitions from: [:rejected], to: :unapproved
+    end
+    event :publish do
+      transitions from: [:verified], to: :published
+    end
+    event :unpublish do
+      transitions from: [:published], to: :verified
+    end
+    event :archive do
+      transitions from: %i[published verified unverified], to: :archived
+    end
   end
 >>>>>>> create migrations
 end

@@ -24,17 +24,35 @@ RailsAdmin.config do |config|
 
   config.model 'News' do
     list do
-      filters %i[title short_information approved]
+      filters %i[title short_information aasm_state]
       field :title do
         filterable true
       end
       field :short_information do
         filterable true
       end
-      field :approved do
+      field :aasm_state, :state do
         filterable true
       end
     end
+    state(
+      events: {
+        reject: 'btn-danger',
+        reverify: 'btn-warning',
+        approve: 'btn-success',
+        publish: 'btn-success',
+        unpublish: 'btn-warning',
+        archive: 'btn-warning'
+      },
+      states: {
+        unapproved: 'label-important',
+        approved: 'label-success',
+        rejected: 'label-warning',
+        published: 'label-success',
+        archived: 'label-important'
+      },
+      disable: [:submit]
+    )
   end
 
   config.model 'Events' do
@@ -59,6 +77,7 @@ RailsAdmin.config do |config|
   end
 
   config.actions do
+    state
     dashboard
     index
     new
