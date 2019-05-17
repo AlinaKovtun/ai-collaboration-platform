@@ -40,13 +40,13 @@ class News < ApplicationRecord
       transitions from: [:rejected], to: :unapproved
     end
     event :publish do
-      transitions from: [:verified], to: :published
+      transitions from: [:approved], to: :published
     end
     event :unpublish do
-      transitions from: [:published], to: :verified
+      transitions from: [:published], to: :unapproved
     end
     event :archive do
-      transitions from: %i[published verified unverified], to: :archived
+      transitions from: %i[published approved unapproved], to: :archived
     end
   end
 >>>>>>> create migrations

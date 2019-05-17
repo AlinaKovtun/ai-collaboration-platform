@@ -57,7 +57,7 @@ RailsAdmin.config do |config|
 
   config.model 'Events' do
     list do
-      filters %i[title description event_start event_end cost]
+      filters %i[title description aasm_state cost]
       field :title do
         filterable true
       end
@@ -70,10 +70,32 @@ RailsAdmin.config do |config|
       field :event_end do
         filterable true
       end
+      field :aasm_state, :state do
+        filterable true
+      end
       field :cost do
         filterable true
       end
     end
+    state(
+      events: {
+        reject: 'btn-danger',
+        reverify: 'btn-warning',
+        approve: 'btn-success',
+        sheduled: 'btn-success',
+        past: 'btn-warning',
+        archive: 'btn-warning'
+      },
+      states: {
+        unapproved: 'label-important',
+        approved: 'label-success',
+        rejected: 'label-warning',
+        sheduled: 'label-success',
+        past: 'label-warning',
+        archived: 'label-important'
+      },
+      disable: [:submit]
+    )
   end
 
   config.actions do
