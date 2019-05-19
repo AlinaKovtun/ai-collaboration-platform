@@ -12,11 +12,14 @@ class User < ApplicationRecord
   has_many :comments
   has_and_belongs_to_many :roles
   has_many :news
-  has_many :events
+
   has_one :email_change_request
   has_many :project_participants
   has_many :projects, through: :project_participants
   has_many :owned_projects, class_name: 'Project', foreign_key: :author_id
+
+  has_many :created_events, class_name: 'Event'
+  has_and_belongs_to_many :subscribed_events, class_name: 'Event', join_table: :events_participants
 
   scope :by_roles, ->(role) { joins(:roles).where('roles_users.role_id': role) }
   scope :approved, -> { where(approved: true) }

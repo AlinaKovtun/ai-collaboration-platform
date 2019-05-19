@@ -209,4 +209,80 @@ RSpec.describe EventsController, type: :controller do
       end
     end
   end
+
+  describe '#subscribe' do
+    let(:new_user) { create(:user) }
+    before { sign_in(new_user) }
+
+    it 'routes /events to events#subscribe' do
+      expect(post: '/events/1/subscribe').to route_to(controller: 'events',
+                                                      action: 'subscribe',
+                                                      id: '1')
+    end
+
+    it 'redirects to evetns#show' do
+      post :subscribe, params: { id: event.id }
+      expect(response).to redirect_to(event_path(event))
+    end
+
+    it 'returns HTTP status found' do
+      post :subscribe, params: { id: event.id }
+      expect(response).to have_http_status(:found)
+    end
+
+    context 'when params are valid' do
+      it "creates a event's participant" do
+        post :subscribe, params: { id: event.id }
+        expect(event.participants.exists?(new_user.id)).to be_truthy
+      end
+    end
+
+    context 'when params are invalid' do
+      let(:new_user_2) { create(:user) }
+      it "does not create new event's participant" do
+        post :subscribe, params: { id: event.id, user_id: new_user_2.id }
+        expect(event.participants.exists?(new_user_2.id)).to be_falsy
+      end
+    end
+  end
+
+  describe '#unsubscribe' do
+    let(:new_user) { create(:user) }
+    before { sign_in(new_user) }
+
+    it 'routes /events to events#unsubscribe' do
+      expect(post: '/events/1/unsubscribe').to route_to(controller: 'events',
+                                                        action: 'unsubscribe',
+                                                        id: '1')
+    end
+
+    it 'redirects to evetns#show' do
+      event.participants << new_user
+      post :unsubscribe, params: { id: event.id }
+      expect(response).to redirect_to(event_path(event))
+    end
+
+    it 'returns HTTP status found' do
+      event.participants << new_user
+      post :unsubscribe, params: { id: event.id }
+      expect(response).to have_http_status(:found)
+    end
+
+    context 'when params are valid' do
+      it "deletes a event's participant" do
+        event.participants << new_user
+        post :unsubscribe, params: { id: event.id }
+        expect(event.participants.exists?(new_user.id)).to be_falsy
+      end
+    end
+
+    context 'when params are invalid' do
+      let(:new_user_2) { create(:user) }
+      it "does not delete event's participant" do
+        event.participants << new_user_2
+        post :unsubscribe, params: { id: event.id, user_id: new_user_2.id }
+        expect(event.participants.exists?(new_user_2.id)).to be_truthy
+      end
+    end
+  end
 end

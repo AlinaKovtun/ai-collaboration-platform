@@ -120,6 +120,14 @@ uk:
     show:
       next_events: 'Наступні події'
       currency: 'грн'
+      attendees: 'Учасники:'
+      question: 'Ти підеш?'
+      ans_yes: 'Так'
+      ans_no: 'Ні'
+    subscribe:
+      notice_yes: 'Вас додано до числа учасників'
+    unsubscribe:
+      notice_no: 'Вас виключено з числа учасників'
     new:
       add_event: 'Додати подію'
     edit:

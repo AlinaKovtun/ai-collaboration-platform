@@ -78,5 +78,18 @@
                   = t ('events.show.currency')
           %h4.text-left.mt-4.mb-4
             = @event.description.html_safe
+          %h4.text-left.mt-2.mb-2
+            %strong
+              = t ('events.show.attendees')
+            = @event.participants.count
+          %h4.text-left.mt-2.mb-2
+            = t ('events.show.question')
+            - unless current_user && current_user == @event.user
+              - if @event.participants.find_by(id: current_user.id)
+                = link_to t('events.show.ans_no'), unsubscribe_event_path(@event), method: :post,
+                  class: 'btn btn-outline-dark mt-0'
+              - else
+                = link_to t('events.show.ans_yes'), subscribe_event_path(@event), method: :post,
+              class: 'btn btn-outline-dark mt-0'
           %br
       = render 'next_events'

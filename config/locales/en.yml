@@ -117,6 +117,14 @@ en:
     show:
       next_events: 'Next events'
       currency: 'UAH'
+      attendees: 'Attendees:'
+      question: 'Are you going?'
+      ans_yes: "Yes, I'm"
+      ans_no: "No, I'm"
+    subscribe:
+      notice_yes: 'You have been added to the list of participants'
+    unsubscribe:
+      notice_no: 'You  have been excluded from the list of participants'
     new:
       add_event: 'Add Event'
     edit:

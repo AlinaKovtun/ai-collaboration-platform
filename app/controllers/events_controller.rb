@@ -3,6 +3,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
   before_action :authenticate_user!, except: %i[show index]
+  before_action :set_event_subscribe, only: %i[subscribe unsubscribe]
 
   def index
     @events = Event.upcoming_events
@@ -20,13 +21,22 @@ class EventsController < ApplicationController
   def edit; end
 
   def create
-    @event = current_user.events.build(event_params)
-
+    @event = current_user.created_events.build(event_params)
     if @event.save
       redirect_to events_path, notice: t('.notice')
     else
       render 'new', alert: t('.alert')
     end
+  end
+
+  def subscribe
+    @event.participants << current_user
+    redirect_to event_path(@event), notice: t('.notice_yes')
+  end
+
+  def unsubscribe
+    @event.participants.delete(current_user.id)
+    redirect_to event_path(@event), notice: t('.notice_no')
   end
 
   def update
@@ -53,7 +63,11 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = current_user.events.find(params[:id])
+    @event = current_user.created_events.find(params[:id])
+  end
+
+  def set_event_subscribe
+    @event = Event.find(params[:id])
   end
 
   def event_params

@@ -2,6 +2,7 @@
 
 class Event < ApplicationRecord
   belongs_to :user
+  has_and_belongs_to_many :participants, class_name: 'User', join_table: :events_participants
 
   validates :title, presence: true, length: { maximum: 200 }
   validates :description, :venue, :event_start, :event_end, presence: true

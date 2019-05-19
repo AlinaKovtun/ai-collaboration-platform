@@ -102,5 +102,10 @@ RSpec.describe Event, type: :model do
       association = described_class.reflect_on_association(:user).macro
       expect(association).to eq :belongs_to
     end
+
+    it 'has_and_belongs_to_many participants' do
+      association = described_class.reflect_on_association(:participants).macro
+      expect(association).to eq :has_and_belongs_to_many
+    end
   end
 end
