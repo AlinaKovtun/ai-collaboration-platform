@@ -19,6 +19,10 @@
     = t('news.form.body')
   %p.text-left.h5
     = form.text_area :body, { class: 'form-input tinymce', rows: 12 }
+  %p
+    = t('news.form.image')
+  %p.text-left.h5
+    = form.file_field :image, { class: 'form-input' }
   %ol
     - @news.errors[:body].each do |msg|
       %li.text-danger

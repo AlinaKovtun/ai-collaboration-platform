@@ -48,6 +48,7 @@ uk:
       short_information: 'Коротка інформація'
       body: 'Тіло новини'
       submit: 'Застосувати'
+      image: 'Зображення'
     new:
       add_news: 'Додати Новину'
     edit:

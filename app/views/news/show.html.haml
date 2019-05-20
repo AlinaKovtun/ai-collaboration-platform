@@ -8,22 +8,24 @@
           %h3.mb-3
             = @news.short_information
           .m-4.user-short-info
-            %img.social-media-icon{ src: 'https://mdbootstrap.com/img/Photos/Avatars/img(28).jpg' }
-            %p.m-0.p-1
+            .thumbnail-social-icon.mr-2
+              = image_tag @news.user.avatar_url
+            %p.ml-2.mb-1
               %b
-                Martha Lores
-            2018 Aug 28
+                = @news.user.first_name
+                = @news.user.last_name
+            %p.m-0
+              = @news.created_at.to_date
           .view.overlay.rounded-top
-          %img.img-fluid{ src: 'https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg' }/
+          .thumbnail-news
+            = image_tag @news.image_url
           %h4.text-left.mt-4.mb-2
             = @news.body.html_safe
           %p.mt-4.text-right
             = t('news.links.share')
             = render 'share_buttons', news: @news
           %br
+        %ul
+          = render 'comments/form'
+          = render partial: 'comments/comment', collection: @news.comments
       = render 'related_news'
-    %ul
-      = render 'comments/form'
-      = render partial: 'comments/comment', collection: @news.comments
-    %br
-    %br
