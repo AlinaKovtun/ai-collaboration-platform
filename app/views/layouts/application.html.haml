@@ -11,12 +11,8 @@
     = render 'shared/header', locale: @locale
 
     .layout
-      - if notice.present?
-        .notice.alert.alert-info
-          = notice
-      - if alert.present?
-        .alert.alert-danger
-          = alert
+      .notifications
+        = render 'shared/notifications'
       = yield
 
     = render 'shared/footer'

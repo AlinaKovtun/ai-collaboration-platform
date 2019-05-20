@@ -1,0 +1,7 @@
+= form_with model: [@project, ProjectParticipant.new],
+  url: project_participants_path(@project), html: {id: 'form_id'} do |form|
+
+  = form.select :user_id, User.all.map{|a| [a.first_name, a.id] }, {}
+  = form.select :role_id, Role.visible_to_users.map{|a| [a.name, a.id] }, {}
+  = form.submit t('project_participants.add_participant'),
+    id: 'add-participant'

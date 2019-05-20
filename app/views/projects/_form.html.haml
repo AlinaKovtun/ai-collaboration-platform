@@ -1,0 +1,23 @@
+= form_for @project do |form|
+  %p
+    = t('projects.form.name')
+  %p
+    = form.text_field :name, { class: 'form-control' }
+  %ul
+    - @project.errors[:name].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('projects.form.description')
+  %p
+    = form.text_field :description, { class: 'form-control' }
+  %ul
+    - @project.errors[:description].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('projects.form.image')
+  %p.text-left.h5
+    = form.file_field :image, { class: 'form-input' }
+  %p.text-right.h5
+    = form.submit t('projects.form.submit'), class: 'btn btn-outline-dark'

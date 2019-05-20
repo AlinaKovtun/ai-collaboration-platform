@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :news
   has_many :events
   has_one :email_change_request
+  has_many :project_participants
+  has_many :projects, through: :project_participants
+  has_many :owned_projects, class_name: 'Project', foreign_key: :author_id
 
   scope :by_roles, ->(role) { joins(:roles).where('roles_users.role_id': role) }
   scope :approved, -> { where(approved: true) }
