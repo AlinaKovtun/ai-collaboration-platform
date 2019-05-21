@@ -2,9 +2,13 @@
 
 class NewsController < ApplicationController
   before_action :find_current_user_news, only: %i[edit update destroy]
+  has_scope :by_categories, type: :array
 
   def index
-    @news = News.approved.all
+    @categories = Category.all
+    search = params[:title_search]
+    @news = apply_scopes(News).all.title_search(search).paginate(page: params[:page], per_page: 3)
+    flash.now[:alert] = t('.alert') if @news.empty?
   end
 
   def show
@@ -23,7 +27,6 @@ class NewsController < ApplicationController
 
   def create
     @news = current_user.news.build(news_params)
-
     if @news.save
       redirect_to news_index_path, notice: t('.notice')
     else
@@ -50,7 +53,7 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:title, :short_information, :body, :image)
+    params.require(:news).permit(:title, :short_information, :body, :image, :category_id)
   end
 
   def find_current_user_news

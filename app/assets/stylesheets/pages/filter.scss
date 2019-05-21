@@ -1,0 +1,55 @@
+$base-color: #0000ff;
+$border-color: #6cc0e5;
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.item {
+  width: 30%;
+}
+
+.box {
+  display: none;
+
+  + label {
+    color: $base-color;
+    cursor: pointer;
+    display: block;
+    font: 14px/20px 'Open Sans', Arial, sans-serif;
+    margin-bottom: 20px;
+    padding-left: 35px;
+    position: relative;
+
+    &::before {
+      border: 1px solid $border-color;
+      content: "";
+      display: block;
+      height: 20px;
+      left: 0;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      transition: all 0.12s, border-color 0.08s;
+      width: 20px;
+    }
+  }
+
+  &:checked + label::before {
+    border-left-color: transparent;
+    border-radius: 0;
+    border-top-color: transparent;
+    left: 5px;
+    opacity: 1;
+    top: -5px;
+    transform: rotate(45deg);
+    width: 10px;
+  }
+}
+
+.search {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

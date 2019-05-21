@@ -35,6 +35,7 @@ uk:
       university_news: 'Новини Університету'
       recent_news: 'Недавні Новини'
       continue_reading: 'Читати далі...'
+      alert: 'Нічого не знайдено'
     aside_bar:
       about_university: 'Про наш Університет'
       life_at_university: 'Життя в Університеті'
@@ -64,6 +65,10 @@ uk:
     update:
       notice: 'Новину успішно оновлено'
       alert: 'Новину не оновлено'
+    selector:
+      button: 'Фільтрувати'
+    search:
+      field: 'Введіть пошук'
   categories:
     new:
       headline: 'Створити нову категорію'

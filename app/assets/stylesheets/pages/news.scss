@@ -83,3 +83,13 @@ img .portrait {
 .social-icon {
   font-size: 20px;
 }
+
+.pagination {
+  margin-top: 20px;
+
+  a,
+  .current,
+  .previous_page {
+    margin-right: 20px;
+  }
+}
