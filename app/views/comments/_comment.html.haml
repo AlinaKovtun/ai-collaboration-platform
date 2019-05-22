@@ -4,16 +4,19 @@
     = comment.user.last_name
   %br
   = comment.content
-
+  %br/
+  %button{ id: 'add-reply', class: 'btn btn-outline-dark' }
+    = t('comments.comment_partial.add-reply')
+  - if current_user && current_user.id == comment.user_id
+    = link_to t('comments.comment_partial.delete'),
+      polymorphic_path([@commentable, comment]),
+      method: :delete,
+      data: { confirm: t('comments.comment.confirmation') },
+      class: 'btn btn-outline-dark'
   = form_for [comment, Comment.new] do |f|
-    %p
-      = f.text_area :content, {placeholder: t('comments.comment.reply_placeholder') }
-    %p
-      = f.submit t('comments.comment.submit'), class: 'btn btn-outline-dark'
-      - if current_user && current_user.id == comment.user_id
-        = link_to t('comments.comment.delete'),
-          polymorphic_path([@commentable, comment]),
-          method: :delete,
-          data: { confirm: t('comments.comment.confirmation') },
-          class: 'btn btn-outline-dark'
+    %br/
+    %p.reply-area
+      = f.text_area :content, {placeholder: t('comments.comment_partial.reply_placeholder') }
+    %p.reply-button
+      = f.submit t('comments.comment_partial.submit'), class: 'btn btn-outline-dark'
   = render partial: 'comments/comment', collection: comment.comments

@@ -148,11 +148,12 @@ en:
       title: 'Comments'
       submit: 'Submit'
       comment_placeholder: 'Write new comment here!'
-    comment:
+    comment_partial:
       reply_placeholder: 'Write reply here!'
-      submit: 'Reply'
+      submit: 'Send'
       delete: 'Delete'
       confirmation: 'Are you sure?'
+      add-reply: "Reply"
     create:
       notice: 'Comment was successfully created'
       alert: 'Comment was not created'
