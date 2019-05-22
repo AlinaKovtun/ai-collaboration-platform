@@ -2,6 +2,7 @@
 
 require 'simplecov'
 require 'simplecov-json'
+require 'fakeredis'
 
 SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
 SimpleCov.start do

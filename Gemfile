@@ -51,6 +51,7 @@ group :development do
 end
 
 group :test do
+  gem 'fakeredis'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
