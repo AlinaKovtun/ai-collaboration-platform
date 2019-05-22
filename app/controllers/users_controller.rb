@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    # binding.pry
     if current_user.update_with_password(pass_params)
       redirect_to user_path(current_user.id)
     else
