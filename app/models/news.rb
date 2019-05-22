@@ -22,31 +22,27 @@ class News < ApplicationRecord
     where('title ILIKE lower(?)', "%#{title_search}%")
   }
 
-  aasm do
-    state :unapproved, initial: true
+  aasm column: 'state' do
+    state :draft, initial: true
     state :approved
     state :rejected
     state :published
     state :archived
 
     event :approve do
-      transitions from: [:unapproved], to: :approved
+      transitions from: [:draft], to: :approved
     end
     event :reject do
-      transitions from: [:unapproved], to: :rejected
-    end
-    event :reverify do
-      transitions from: [:approved], to: :unapproved
-      transitions from: [:rejected], to: :unapproved
+      transitions from: [:draft], to: :rejected
     end
     event :publish do
       transitions from: [:approved], to: :published
     end
     event :unpublish do
-      transitions from: [:published], to: :unapproved
+      transitions from: [:published], to: :draft
     end
     event :archive do
-      transitions from: %i[published approved unapproved], to: :archived
+      transitions from: %i[published approved draft], to: :archived
     end
   end
 >>>>>>> create migrations

@@ -5,8 +5,8 @@ FactoryBot.define do
     sequence(:title) { |n| "Title #{n}" }
     body { 'body' }
     short_information { 'short_information' }
-    aasm_state { 'approved' }
     category
+    state { 'published' }
     user
   end
 end

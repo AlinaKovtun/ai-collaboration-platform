@@ -2,6 +2,6 @@
 
 class AddAasmStateToNews < ActiveRecord::Migration[5.2]
   def change
-    add_column :news, :aasm_state, :string
+    add_column :news, :state, :string
   end
 end

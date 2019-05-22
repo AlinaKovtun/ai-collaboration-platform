@@ -13,11 +13,9 @@ class Event < ApplicationRecord
 
   scope :upcoming_events, -> { where('event_start >= ?', Time.now).order(:event_start) }
   scope :next_events, ->(event) { upcoming_events.where.not(id: event.id).limit(3) }
-  # scope :sheduled, -> { where(aasm_state: 'sheduled') }
 
-  aasm do
-    # unaproved to draft
-    state :unapproved, initial: true
+  aasm column: 'state' do
+    state :draft, initial: true
     state :approved
     state :rejected
     state :sheduled
@@ -25,14 +23,10 @@ class Event < ApplicationRecord
     state :archived
 
     event :approve do
-      transitions from: [:unapproved], to: :approved
+      transitions from: [:draft], to: :approved
     end
     event :reject do
-      transitions from: [:unapproved], to: :rejected
-    end
-    event :reverify do
-      transitions from: [:approved], to: :unapproved
-      transitions from: [:rejected], to: :unapproved
+      transitions from: [:draft], to: :rejected
     end
     event :sheduled do
       transitions from: [:approved], to: :sheduled
@@ -41,7 +35,7 @@ class Event < ApplicationRecord
       transitions from: [:sheduled], to: :past
     end
     event :archive do
-      transitions from: %i[sheduled approved unapproved], to: :archived
+      transitions from: %i[sheduled approved draft], to: :archived
     end
   end
 
