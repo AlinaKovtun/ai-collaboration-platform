@@ -14,7 +14,7 @@ class EmailChangeRequestsController < ApplicationController
     if current_user.valid_password?(params[:email_change_request][:current_password]) \
        && @email_change_request.save
 
-      MessagesMailer.approve_email(current_user, @email_change_request).deliver_now
+      EmailSendJob.perform_later(current_user, @email_change_request)
       redirect_to news_index_path
     else
       destroy_and_alert
