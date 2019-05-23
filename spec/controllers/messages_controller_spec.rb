@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe MessagesController, type: :controller do
   let(:user) { create(:user) }
-  let(:params) { attributes_for(:message, email: user.email) }
+  let(:params) { attributes_for(:message) }
   let(:invalid_params) { attributes_for(:message, email: ' ') }
 
   before { sign_in(user) }
@@ -20,14 +20,14 @@ RSpec.describe MessagesController, type: :controller do
     context 'when message params is right' do
       it 'sends message' do
         expect { post :create, params: { message: params } }.to \
-          change { ActionMailer::Base.deliveries.count }.by(1)
+          change { enqueued_jobs.size }.by(1)
       end
     end
 
     context 'when message params is not right' do
       it 'does not send message' do
         expect { post :create, params: { message: invalid_params } }.to \
-          change { ActionMailer::Base.deliveries.count }.by(0)
+          change { enqueued_jobs.size }.by(0)
       end
     end
   end

@@ -4,11 +4,11 @@ require 'rails_helper'
 
 RSpec.describe MessagesMailer, type: :mailer do
   describe '#contact_us_email' do
-    let(:message) { build(:message) }
+    let(:message) { build(:message).as_json }
     let(:mail) { MessagesMailer.contact_us_email(message) }
     context 'when user submitted message form' do
       it 'renders the mail body' do
-        expect(mail.body.encoded).to match(message.author_name)
+        expect(mail.body.encoded).to match(message['email'])
       end
     end
   end
