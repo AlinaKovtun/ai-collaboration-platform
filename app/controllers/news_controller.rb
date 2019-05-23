@@ -18,8 +18,7 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     @news.increment!(:views)
-    @commentable = @news
-    @comments = @commentable.comments
+    @comments = @news.comments.sort_by(&:created_at)
     @comment = Comment.new
   end
 
