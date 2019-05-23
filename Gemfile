@@ -36,6 +36,7 @@ gem 'will_paginate', '~> 3.1'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.8'
 end
 
@@ -50,6 +51,7 @@ group :development do
 end
 
 group :test do
+  gem 'fakeredis'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'

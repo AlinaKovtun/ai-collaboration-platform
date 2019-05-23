@@ -1,0 +1,24 @@
+%form
+  .row
+    .col-md-8
+      .form-group
+        %label
+          = t ('users.edit.email')
+        %h3= user.email
+      .form-group
+        %label
+          = t ('users.edit.first_name')
+        %h3= user.first_name
+      .form-group
+        %label
+          = t ('users.edit.last_name')
+        %h3= user.last_name
+      .form-group
+        %label
+          = t ('users.edit.about_me')
+        %h3.about-me
+          = user.about_me
+    .card-title.mb-4
+      .d-flex.justify-content-start
+        .image-container
+          = image_tag user.avatar.url, alt: 'Avatar' , class: 'user-img'

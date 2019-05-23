@@ -11,6 +11,18 @@ class User < ApplicationRecord
   has_and_belongs_to_many :roles
   has_many :news
   has_many :events
+  has_one :email_change_request
 
   scope :approved, -> { where(approved: true) }
+
+  attr_accessor :current_password
+
+  def update_with_password(params, *options)
+    if params[:current_password].present? && params[:password].blank?
+      errors.add(:password, I18n.t('passwords.password.blank'))
+      false
+    else
+      super
+    end
+  end
 end

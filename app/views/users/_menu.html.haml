@@ -1,0 +1,11 @@
+.card
+  .card-header
+    %h5.card-title.mb-0
+      = t ('users.edit.profile')
+  .list-group.list-group-flush
+    %a.list-group-item.list-group-item-action{ href: edit_user_path(current_user.id) }
+      = t ('users.edit.description')
+    %a.list-group-item.list-group-item-action{ href: new_email_change_request_path }
+      = t ('users.edit.email')
+    %a.list-group-item.list-group-item-action{ href: user_edit_password_path(current_user.id) }
+      = t ('users.edit.password')

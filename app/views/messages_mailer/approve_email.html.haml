@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{ content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }/
+  %body
+    %h1
+      Dear, #{ @user.first_name }
+    %p
+      you change email to: #{ @new_email }
+      %br/
+    %p
+      To change email, just follow this link:
+    %p= link_to 'Change email', approve_url(token: @token)
+
+    %p Thanks for joining and have a great day!

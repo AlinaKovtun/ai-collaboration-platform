@@ -1,13 +1,11 @@
-.container
+.container.p-0
+  %h1.mb-3
+    = t ('users.edit.profile')
   .row
-    .col-12
+    .col-md-8.col-xl-12
       .card
+        .card-header
+          %h5.card-title.mb-0
+            = t ('users.edit.profile')
         .card-body
-          .card-title.mb-4
-            .d-flex.justify-content-start
-              .image-container
-                = image_tag user_avatar_url, alt: 'Avatar' , class: 'user-img'
-                %br
-                  = link_to t('users.user.edit'),
-                            edit_user_path(current_user.id) ,
-                            method: :get , class: 'btn'
+          = render 'form', user: @user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_194239) do
+ActiveRecord::Schema.define(version: 2019_05_16_053858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,14 +44,6 @@ ActiveRecord::Schema.define(version: 2019_05_19_194239) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chats_on_user_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "commentable_id"
@@ -60,6 +52,16 @@ ActiveRecord::Schema.define(version: 2019_05_19_194239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "email_change_requests", force: :cascade do |t|
+    t.string "email"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["token"], name: "index_email_change_requests_on_token", unique: true
+    t.index ["user_id"], name: "index_email_change_requests_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -82,9 +84,9 @@ ActiveRecord::Schema.define(version: 2019_05_19_194239) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
     t.integer "views", default: 0
     t.boolean "approved", default: false
+    t.integer "category_id"
     t.string "image"
     t.index ["created_at"], name: "index_news_on_created_at"
     t.index ["user_id"], name: "index_news_on_user_id"
@@ -125,8 +127,8 @@ ActiveRecord::Schema.define(version: 2019_05_19_194239) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "chats", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "email_change_requests", "users"
   add_foreign_key "events", "users"
   add_foreign_key "news", "categories"
   add_foreign_key "news", "users"
