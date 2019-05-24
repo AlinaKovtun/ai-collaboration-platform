@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_16_053858) do
+ActiveRecord::Schema.define(version: 2019_05_20_070402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,10 +86,31 @@ ActiveRecord::Schema.define(version: 2019_05_16_053858) do
     t.datetime "updated_at", null: false
     t.integer "views", default: 0
     t.boolean "approved", default: false
-    t.integer "category_id"
     t.string "image"
+    t.integer "category_id"
     t.index ["created_at"], name: "index_news_on_created_at"
     t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
+  create_table "project_participants", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_participants_on_project_id"
+    t.index ["role_id"], name: "index_project_participants_on_role_id"
+    t.index ["user_id"], name: "index_project_participants_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -109,15 +130,15 @@ ActiveRecord::Schema.define(version: 2019_05_16_053858) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.text "about_me"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.text "about_me"
     t.datetime "remember_created_at"
     t.boolean "approved", default: false
     t.string "avatar"
@@ -132,6 +153,10 @@ ActiveRecord::Schema.define(version: 2019_05_16_053858) do
   add_foreign_key "events", "users"
   add_foreign_key "news", "categories"
   add_foreign_key "news", "users"
+  add_foreign_key "project_participants", "projects"
+  add_foreign_key "project_participants", "roles"
+  add_foreign_key "project_participants", "users"
+  add_foreign_key "projects", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end

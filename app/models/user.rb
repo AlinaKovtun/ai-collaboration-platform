@@ -3,7 +3,9 @@
 class User < ApplicationRecord
   mount_uploader :avatar, ImageUploader
   devise :database_authenticatable, :registerable, :validatable, :confirmable,
-         :recoverable, :rememberable, :async
+         :recoverable, :rememberable, :async,
+         :omniauthable, omniauth_providers: %i[facebook]
+
   validates :first_name, :last_name, presence: true, length: { maximum: 20 }
   validates :about_me, length: { maximum: 500 }
 
@@ -23,6 +25,14 @@ class User < ApplicationRecord
       false
     else
       super
+    end
+  end
+
+  def self.from_omniauth(auth)
+    find_or_create_by(email: auth.info.email) do |user|
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.confirm
     end
   end
 end
