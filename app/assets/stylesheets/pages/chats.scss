@@ -1,0 +1,29 @@
+.name {
+  color: $pink;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.chat {
+  background: $banner-color;
+  border: 2px $contact-background solid;
+  margin: 20px auto;
+  width: 1000px;
+}
+
+.chats {
+  margin: 20px auto;
+  width: 900px;
+
+  input {
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 90%;
+
+    &:last-child {
+      float: right;
+      width: 10%;
+    }
+  }
+}

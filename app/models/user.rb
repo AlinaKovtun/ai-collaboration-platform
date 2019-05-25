@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   has_many :created_events, class_name: 'Event'
   has_and_belongs_to_many :subscribed_events, class_name: 'Event', join_table: :events_participants
+  has_many :chats
 
   scope :by_roles, ->(role) { joins(:roles).where('roles_users.role_id': role) }
   scope :approved, -> { where(approved: true) }

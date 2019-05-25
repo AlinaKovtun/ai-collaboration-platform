@@ -1,0 +1,12 @@
+.container
+  .chat
+    %h1
+      Welcome to Chat, #{current_user.first_name}!
+    .row
+      .chats
+        = form_for Chat.new, remote: true do |f|
+          = f.text_field :body
+          = f.submit "Send"
+    %ul#chat
+      = render @chats
+    = subscribe_to "/messages/new"

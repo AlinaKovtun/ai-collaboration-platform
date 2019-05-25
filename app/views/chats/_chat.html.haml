@@ -1,0 +1,5 @@
+%li.text
+  %span.created_at= chat.created_at.localtime.strftime("%H:%M:%S")
+  %span.name
+    = chat.user.first_name
+  = chat.body

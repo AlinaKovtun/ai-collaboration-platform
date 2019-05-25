@@ -14,10 +14,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
-//= require jquery
 //= require material
+//= require private_pub
 //= require tinymce
 //= require tinymce-jquery
-//= require turbolinks
+//= require jquery.cssemoticons
+//= require add_smiles
 //= require_tree .

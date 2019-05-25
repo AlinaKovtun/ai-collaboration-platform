@@ -17,6 +17,11 @@
       = link_to t('shared.header.create_news'), new_news_path, class: 'nav-link'
     %li.nav-item
       = link_to t('shared.header.users'), users_path, class: 'nav-link'
+    %li.nav-item
+      = link_to t('shared.header.create_category'), new_category_path, class: 'nav-link'
+    %li.nav-item
+      = link_to t('shared.header.enter_chat'), chat_path, class: 'nav-link'
+>>>>>>> Chat initial commit
   %ul.navbar-nav
     %li.nav-item
       - if user_signed_in?

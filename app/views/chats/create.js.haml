@@ -1,0 +1,4 @@
+- publish_to "/messages/new" do
+  $("#chat").prepend("#{j render(@chat)}");
+$('.text').emoticonize({delay: 80});
+$('#chat_body').val('');

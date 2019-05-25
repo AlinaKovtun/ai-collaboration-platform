@@ -13,6 +13,16 @@ en:
       create_news: 'Create News'
       events: 'Events'
       users: 'Users'
+      enter_chat: 'Enter Chat'
+      create_category: 'Create Category'
+  users:
+    user:
+      edit: 'Edit'
+      submit: 'Submit'
+      profile: 'Profile'
+      notice: 'Successful update'
+      alert: 'Unsuccessful update'
+      error: 'Помилка'
   news:
     links:
       recent: 'Recent'
