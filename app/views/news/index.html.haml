@@ -25,12 +25,10 @@
             %h5.m-0.text-dark
               = link_to t('news.links.read_more'), news_path(news)
               = fa_icon 'eye', text: news.views, class: 'ml-4'
-              = fa_icon 'tags', class: 'ml-4'
+              = fa_icon 'tags', text: t('news.links.category'), class: 'ml-4'
               = link_to news.category.name
           .col-lg-4
             .thumbnail
               = image_tag news.image_url(:thumb)
-              %img{ src: 'https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg' }
-
     = render 'aside_bar'
   = will_paginate @news
