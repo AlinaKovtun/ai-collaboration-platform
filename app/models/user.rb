@@ -15,7 +15,13 @@ class User < ApplicationRecord
   has_many :events
   has_one :email_change_request
 
+  scope :by_roles, ->(role) { joins(:roles).where('roles_users.role_id': role) }
   scope :approved, -> { where(approved: true) }
+
+  scope :find_users, (lambda do |search|
+    where('first_name ILIKE lower(?) or
+           last_name ILIKE lower(?)', "%#{search}%", "%#{search}%")
+  end)
 
   attr_accessor :current_password
 

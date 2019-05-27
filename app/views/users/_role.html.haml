@@ -1,0 +1,6 @@
+.item
+  = check_box_tag 'by_roles[]',
+    role.id,
+    params.key?(:by_roles) ? params[:by_roles].include?(role.id.to_s) : false,
+    id: role.name, class: 'box'
+  = label_tag role.name

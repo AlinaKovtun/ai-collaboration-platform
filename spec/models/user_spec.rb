@@ -28,6 +28,12 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context 'when password is blank' do
+      it 'is not valid' do
+        expect(build(:user, password: '')).not_to be_valid
+      end
+    end
+
     context 'when first_name is blank' do
       it 'is not valid' do
         expect(build(:user, first_name: '')).not_to be_valid

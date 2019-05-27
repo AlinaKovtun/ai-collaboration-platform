@@ -1,0 +1,7 @@
+.row
+  = form_tag 'users#index', method: "get", id: "roles_search", class: 'filter' do
+    - @roles.each do |role|
+      = render 'role', role:role
+    %br
+      = render 'search_form'
+    %br

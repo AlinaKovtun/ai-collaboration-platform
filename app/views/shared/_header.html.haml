@@ -1,8 +1,7 @@
 %nav.navbar.navbar-expand-sm.bg-light.justify-content-between
   %ul.navbar-nav
     %li.nav-item
-      %a.nav-link{ href: '#' }
-        = t('shared.header.news')
+      = link_to t('shared.header.news'), news_index_path, class: 'nav-link'
     %li.nav-item
       %a.nav-link{ href: events_path }
         = t('shared.header.events')
@@ -16,6 +15,8 @@
       = link_to t('shared.header.contacts'), contact_us_path, class: 'nav-link'
     %li.nav-item
       = link_to t('shared.header.create_news'), new_news_path, class: 'nav-link'
+    %li.nav-item
+      = link_to t('shared.header.users'), users_path, class: 'nav-link'
   %ul.navbar-nav
     %li.nav-item
       - if user_signed_in?
