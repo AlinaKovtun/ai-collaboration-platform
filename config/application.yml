@@ -1,0 +1,11 @@
+defaults: &defaults
+  app_email: 'soft.darkside@gmail.com'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

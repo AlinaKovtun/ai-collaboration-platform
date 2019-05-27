@@ -1,0 +1,7 @@
+%p
+  = @commenter.first_name
+  = @commenter.last_name
+  commented on your
+  = @commentable.class
+%p
+  = link_to 'Go there to see a comment', @url

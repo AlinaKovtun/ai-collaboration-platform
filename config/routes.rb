@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     resources :news do
       resources :comments
     end
-    resources :comments do
-      resources :comments
-    end
+
     devise_for :users, skip: :omniauth_callbacks, controllers:
       {
         registrations: 'devise_overrides/registrations'

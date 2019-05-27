@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @commentable.comments.build(comment_params.merge(user_id: current_user.id))
     if @commentable.save
       flash[:notice] = t('.notice')
+      send_email
     else
       flash[:alert] = t('.alert')
     end
@@ -41,5 +42,10 @@ class CommentsController < ApplicationController
 
   def find_current_user_comments
     @comment = current_user.comments.find(params[:id])
+  end
+
+  def send_email
+    url = news_url(params[:news_id])
+    MessagesMailer.comment_email(@commentable, current_user, url).deliver_later
   end
 end

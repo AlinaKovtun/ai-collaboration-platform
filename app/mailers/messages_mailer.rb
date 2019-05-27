@@ -4,8 +4,8 @@ class MessagesMailer < ActionMailer::Base
   def contact_us_email(message)
     @message = message
     mail(
-      from: @message.email,
-      to: 'soft.darkside@gmail.com',
+      from: Settings.app_email,
+      to: Settings.app_email,
       subject: 'Contact us'
     )
   end
@@ -14,6 +14,17 @@ class MessagesMailer < ActionMailer::Base
     @user = user
     @token = emailchange.token
     @new_email = emailchange.email
-    mail(from: 'soft.darkside@gmail.com', to: @user.email, subject: 'You change email')
+    mail(from: Settings.app_email, to: @user.email, subject: 'You change email')
+  end
+
+  def comment_email(commentable, commenter, url)
+    @commentable = commentable
+    @commenter = commenter
+    @url = url
+    mail(
+      from: Settings.app_email,
+      to: @user.email,
+      subject: "#{commenter.first_name} leaved comment on your #{@commentable.class}"
+    )
   end
 end

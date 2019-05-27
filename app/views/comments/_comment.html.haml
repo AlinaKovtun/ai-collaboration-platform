@@ -4,15 +4,14 @@
     = comment.user.last_name
   %br
   = comment.content
-
-  = form_for [comment, Comment.new] do |f|
+  = form_for Comment.new, url: news_comments_path(@news, comment_id: comment.id) do |f|
     %p
       = f.text_area :content, {placeholder: t('comments.comment.reply_placeholder') }
     %p
       = f.submit t('comments.comment.submit'), class: 'btn btn-outline-dark'
       - if current_user && current_user.id == comment.user_id
         = link_to t('comments.comment.delete'),
-          polymorphic_path([@commentable, comment]),
+          news_comment_path(@news, comment),
           method: :delete,
           data: { confirm: t('comments.comment.confirmation') },
           class: 'btn btn-outline-dark'
