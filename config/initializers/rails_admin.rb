@@ -3,6 +3,7 @@
 RailsAdmin.config do |config|
   config.authenticate_with do
     warden.authenticate! scope: :user
+    redirect_to main_app.root_path if current_user.nil? || !current_user.admin?
   end
   config.current_user_method(&:current_user)
 
@@ -31,6 +32,27 @@ RailsAdmin.config do |config|
         filterable true
       end
       field :approved do
+        filterable true
+      end
+    end
+  end
+
+  config.model 'Events' do
+    list do
+      filters %i[title description event_start event_end cost]
+      field :title do
+        filterable true
+      end
+      field :description do
+        filterable true
+      end
+      field :event_start do
+        filterable true
+      end
+      field :event_end do
+        filterable true
+      end
+      field :cost do
         filterable true
       end
     end

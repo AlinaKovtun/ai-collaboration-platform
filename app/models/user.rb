@@ -35,4 +35,10 @@ class User < ApplicationRecord
       user.confirm
     end
   end
+
+  %w[student expert mentor teacher admin].each do |role|
+    define_method "#{role}?" do
+      roles.any?(&:"#{role}?")
+    end
+  end
 end
