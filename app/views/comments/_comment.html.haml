@@ -1,7 +1,9 @@
 .container.my-border
   %strong
-    = comment.user.first_name
-    = comment.user.last_name
+    = link_to "#{comment.user.first_name} #{comment.user.last_name}",
+               user_path(comment.user.id),
+               class: "text-dark"
+  = comment.created_at.in_time_zone('Europe/Kiev').strftime("%Y-%m-%d %R")
   %br
   = comment.content
   = form_for Comment.new, url: news_comments_path(@news, comment_id: comment.id) do |f|

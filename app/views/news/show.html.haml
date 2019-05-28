@@ -9,11 +9,12 @@
             = @news.short_information
           .m-4.user-short-info
             .thumbnail-social-icon.mr-2
-              = image_tag @news.user.avatar_url
+              = link_to image_tag(@news.user.avatar_url), user_path(@news.user.id)
             %p.ml-2.mb-1
               %b
-                = @news.user.first_name
-                = @news.user.last_name
+                = link_to "#{@news.user.first_name} #{@news.user.last_name}",
+                           user_path(@news.user.id),
+                           class: "text-dark"
             %p.m-0
               = @news.created_at.to_date
           .view.overlay.rounded-top
