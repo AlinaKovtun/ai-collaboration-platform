@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :comments do
       resources :comments
     end
-    # devise_for :users, controllers: { registrations: 'devise_overrides/registrations' }
     devise_for :users, skip: :omniauth_callbacks, controllers:
       {
         registrations: 'devise_overrides/registrations'

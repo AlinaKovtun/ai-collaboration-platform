@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_070402) do
+ActiveRecord::Schema.define(version: 2019_05_16_053858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,27 +92,6 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.index ["user_id"], name: "index_news_on_user_id"
   end
 
-  create_table "project_participants", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "role_id"
-    t.bigint "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_project_participants_on_project_id"
-    t.index ["role_id"], name: "index_project_participants_on_role_id"
-    t.index ["user_id"], name: "index_project_participants_on_user_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
-    t.text "description"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_projects_on_user_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.index ["name"], name: "index_roles_on_name", unique: true
@@ -153,10 +132,6 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
   add_foreign_key "events", "users"
   add_foreign_key "news", "categories"
   add_foreign_key "news", "users"
-  add_foreign_key "project_participants", "projects"
-  add_foreign_key "project_participants", "roles"
-  add_foreign_key "project_participants", "users"
-  add_foreign_key "projects", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end
