@@ -3,7 +3,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  if Rails.env.test? or Rails.env.cucumber?
+  if Rails.env.test? || Rails.env.cucumber?
     storage :file
   else
     storage :fog
