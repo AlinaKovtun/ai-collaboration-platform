@@ -104,5 +104,5 @@ Rails.application.configure do
     authentication: 'login',
     enable_starttls_auto: true
   }
-  config.storage = :fog
+
 end
