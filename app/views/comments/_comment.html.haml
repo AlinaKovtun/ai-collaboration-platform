@@ -22,7 +22,7 @@
     %p.reply-button
       = f.submit t('comments.comment_partial.submit'), class: 'btn btn-outline-dark'
   - if current_user && current_user.id == comment.user_id
-    = form_for [comment] do |f|
+    = form_for [@news, comment] do |f|
       %p.comment-edit-area
         = f.text_area :content, { cols: 30, rows: 2}
       %p.comment-edit-button
