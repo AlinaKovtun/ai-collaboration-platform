@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'chats/room'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     get '/chatroom', to: 'chats#index', as: 'chat'

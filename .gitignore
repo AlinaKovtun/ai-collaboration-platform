@@ -16,4 +16,4 @@
 /coverage
 *.rdb
 /public/uploads/*
-/config/private_pub.yml
+.env

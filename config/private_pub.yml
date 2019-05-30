@@ -1,10 +1,10 @@
 development:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  server: ENV['SERVER']
+  secret_token: ENV['SECRET_TOKEN']
 test:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  server: ENV['SERVER']
+  secret_token: ENV['SECRET_TOKEN']
 production:
-  server: "https://rubycourse.herokuapp.com/faye"
-  secret_token: "a3d28e41d0c58657eda52297141a1c8ba4ac8fa6cb57fb02e7d3aef485405efd"
-  signature_expiration: 3600 # one hour
+  server:  ENV['SERVER_PRODUCTION']
+  secret_token: ENV['SECRET_TOKEN_PRODUCTION']
+  signature_expiration: ENV['EXPIRATION']
