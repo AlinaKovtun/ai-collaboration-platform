@@ -12,6 +12,7 @@ uk:
       contacts: 'Контакти'
       create_news: 'Створити Новину'
       events: 'Події'
+      users: 'Користувачі'
   errors:
     messages:
         extension_whitelist_error: "Ви не можете завантажити файлу типу: %{extension}, дозволені типи файлів: %{allowed_types}"
@@ -184,6 +185,12 @@ uk:
       notice: 'Успішно оновлено'
       alert: 'Не оновлено'
       error: 'Помилка'
+    index:
+      users: 'Користувачі'
+      search: 'Пошук'
+      alert: 'Нічого не знайдено'
+    search:
+      field: 'Введіть пошук'
   emailchange:
     alert: 'Ця пошта зайнята'
     notice: 'Email змінено'

@@ -12,6 +12,7 @@ en:
       contacts: 'Contacts'
       create_news: 'Create News'
       events: 'Events'
+      users: 'Users'
   news:
     links:
       recent: 'Recent'
@@ -180,6 +181,12 @@ en:
       notice: 'Successful update'
       alert: 'Unsuccessful update'
       error: 'Error'
+    index:
+      users: 'Users'
+      search: 'Search'
+      alert: 'Nothing was found'
+    search:
+      field: 'Search here'
   emailchange:
     alert: 'This email is occupation'
     notice: 'Email change'

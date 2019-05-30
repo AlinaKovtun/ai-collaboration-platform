@@ -92,18 +92,20 @@ RSpec.describe UsersController, type: :controller do
 
   describe '#update_password' do
     context 'valid password' do
+      before { sign_in(user) }
+
       let(:params1) do
         {
           password: 'wordpass1',
           password_confirmation: 'wordpass1',
-          current_password: (user.password.to_i + 1)
+          current_password: user.password
         }
       end
 
       it 'valid current_password' do
         patch :update_password, params: { user_id: user.id,
                                           user: params1 }
-        expect(response).to redirect_to user_path(user.id + 1)
+        expect(response).to redirect_to user_path(user.id)
       end
 
       let(:params2) do
@@ -164,9 +166,23 @@ RSpec.describe UsersController, type: :controller do
         }
       end
 
-      it 'blanck current_password' do
+      it 'blank current_password' do
         put :update_password, params: { user_id: user.id,
                                         user: params_blank }
+        expect(response).to render_template :edit_password
+      end
+
+      let(:params_blank1) do
+        {
+          password: '',
+          password_confirmation: '',
+          current_password: user.password
+        }
+      end
+
+      it 'blank password' do
+        put :update_password, params: { user_id: user.id,
+                                        user: params_blank1 }
         expect(response).to render_template :edit_password
       end
     end
@@ -176,6 +192,22 @@ RSpec.describe UsersController, type: :controller do
     it 'show user' do
       get :show, params: { id: user.id }
       expect(response).to render_template :show
+    end
+  end
+
+  describe '#index' do
+    it 'routes /users to users#index' do
+      get :index
+      expect(get: '/users').to route_to(controller: 'users', action: 'index')
+    end
+  end
+
+  describe '#edit' do
+    context 'when users id is right' do
+      it 'renders edit template' do
+        get :edit, params: { id: user.id }
+        expect(response).to render_template :edit
+      end
     end
   end
 end

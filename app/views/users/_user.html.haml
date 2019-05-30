@@ -1,0 +1,17 @@
+%hr
+%a{ href: user_path(user.id) }
+  .row
+    .col-lg-8
+      %h4.m-0.row
+        = t ('users.edit.first_name')
+        = user.first_name
+      %h4.m-0.d-inline
+        = t ('users.edit.last_name')
+        = user.last_name
+      %h5.m-0.text-dark
+        - user.roles.each do |role|
+          = fa_icon 'tags', class: 'ml-4'
+          = role.name
+    .col-lg-4
+      .thumbnail
+        = image_tag user.avatar.url, alt: 'Avatar' , class: 'user-img'

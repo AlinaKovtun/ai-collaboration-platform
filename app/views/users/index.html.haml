@@ -1,0 +1,10 @@
+.container
+  .row.justify-content-center.mt-4
+    .col-lg-7
+      %h3
+        = render 'search'
+        = t ('users.index.users')
+        .users
+          = render @users
+    = render 'news/aside_bar'
+    = will_paginate @users
