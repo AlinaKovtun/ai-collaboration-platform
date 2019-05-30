@@ -12,9 +12,7 @@
               = link_to image_tag(@news.user.avatar_url), user_path(@news.user.id)
             %p.ml-2.mb-1
               %b
-                = link_to @news.user.full_name,
-                          user_path(@news.user.id),
-                          class: "text-dark"
+                = links_helper(@news)
             %p.m-0
               = @news.created_at.to_date
           .view.overlay.rounded-top

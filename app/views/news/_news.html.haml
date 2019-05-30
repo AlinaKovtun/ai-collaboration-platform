@@ -14,9 +14,7 @@
       %p.mb-1
         = t ('news.links.written_by')
         %strong
-          = link_to news.user.full_name,
-                    user_path(news.user.id),
-                    class: 'text-dark'
+          = links_helper(news)
           %br
           = t('news.links.created_at')
           = news.created_at.to_date
