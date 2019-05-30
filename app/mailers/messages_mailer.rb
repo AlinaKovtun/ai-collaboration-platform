@@ -23,7 +23,7 @@ class MessagesMailer < ActionMailer::Base
     @url = url
     mail(
       from: Settings.app_email,
-      to: @user.email,
+      to: @commentable.user.email,
       subject: "#{commenter.first_name} leaved comment on your #{@commentable.class}"
     )
   end
