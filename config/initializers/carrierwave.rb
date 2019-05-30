@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'carrierwave/orm/activerecord'
-
 CarrierWave.configure do |config|
   config.fog_provider = 'fog/aws' # required
   config.fog_credentials = {
@@ -11,7 +10,12 @@ CarrierWave.configure do |config|
     region: ENV['AWS_REGION'],
     path_style: true
   }
-  config.fog_directory  = ENV['AWS_BUCKET']
-  config.fog_public     = false
-  config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+  if Rails.env.test?
+    config.storage = :file
+  else
+    config.storage = :fog
+    config.fog_directory  = ENV['AWS_BUCKET']
+    config.fog_public     = false
+    config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+  end
 end
