@@ -4,7 +4,7 @@
     = comment.user.last_name
   %br
   = comment.content
-  %br/
+  %br
   %button{ id: 'add-reply', class: 'btn btn-outline-dark', 'data-comment-id': comment.id }
     = t('comments.comment_partial.add-reply')
   - if current_user && current_user.id == comment.user_id
@@ -16,14 +16,15 @@
       data: { confirm: t('comments.comment.confirmation') },
       class: 'btn btn-outline-dark'
   = form_for Comment.new, url: news_comments_path(@news, comment_id: comment.id) do |f|
-    %p{ id: "reply_area_#{comment.id}", class: 'not-displayed' }
+    %br
+    %p.not-displayed{ id: "reply_area_#{comment.id}" }
       = f.text_area :content, {placeholder: t('comments.comment_partial.reply_placeholder') }
-    %p{ id: "reply_button_#{comment.id}", class: 'not-displayed' }
+    %p.not-displayed{ id: "reply_button_#{comment.id}" }
       = f.submit t('comments.comment_partial.submit'), class: 'btn btn-outline-dark'
   - if current_user && current_user.id == comment.user_id
     = form_for [@news, comment] do |f|
-      %p{ id: "edit_area_#{comment.id}", class: 'not-displayed' }
+      %p.not-displayed{ id: "edit_area_#{comment.id}" }
         = f.text_area :content, { cols: 30, rows: 2}
-      %p{ id: "edit_button_#{comment.id}", class: 'not-displayed' }
+      %p.not-displayed{ id: "edit_button_#{comment.id}" }
         = f.submit t('comments.comment_partial.edit'), class: 'btn btn-outline-dark'
   = render partial: 'comments/comment', collection: comment.comments.sort_by(&:created_at)
