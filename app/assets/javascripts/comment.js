@@ -1,24 +1,16 @@
-document.addEventListener('turbolinks:load', function(){
-    $("button#add-reply").click(function(){
-      thisComment = $(this).parent();
-      commentId = $(this).data('comment-id');
-      if (thisComment.find('#edit_area_'+commentId).css("display") == "block") {
-        thisComment.find("#edit_area_"+commentId).hide();
-        thisComment.find("#edit_button_"+commentId).hide();
-      }
-      thisComment.find("#reply_area_"+commentId).toggle();
-      thisComment.find("#reply_button_"+commentId).toggle();
-    });
+var myFunc = function(obj, hideArea, hideButton, toggleArea, toggleButton) {
+    $(obj).click(function(){
+    thisComment = $(this).parent();
+    commentId = $(this).data('comment-id');
+    thisComment.find(hideArea+commentId).hide();
+    thisComment.find(hideButton+commentId).hide();
+    thisComment.find(toggleArea+commentId).toggle();
+    thisComment.find(toggleButton+commentId).toggle();
+  });
+};
 
-    $("button#comment-edit").click(function(){
-      commentId = $(this).data('comment-id');
-      thisComment = $(this).parent();
-      if (thisComment.find('#reply_area_'+commentId).css("display") == "block") {
-        thisComment.find("#reply_area_"+commentId).hide();
-        thisComment.find("#reply_button_"+commentId).hide();
-      }
-      thisComment.find("#edit_area_"+commentId).toggle();
-      thisComment.find("#edit_button_"+commentId).toggle();
-    });
+document.addEventListener('turbolinks:load', function(){
+    myFunc("button#add-reply", "#edit_area_", "#edit_button_", "#reply_area_", "#reply_button_");
+    myFunc("button#comment-edit", "#reply_area_", "#reply_button_", "#edit_area_", "#edit_button_");
   }
 );
