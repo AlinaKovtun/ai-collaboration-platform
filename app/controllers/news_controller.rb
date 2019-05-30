@@ -2,14 +2,17 @@
 
 class NewsController < ApplicationController
   before_action :find_current_user_news, only: %i[edit update destroy]
-  has_scope :by_categories, type: :array
+
+  has_scope :ordered_by_views, type: :boolean, only: %i[index]
+  has_scope :by_categories, type: :array, only: %i[index]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
     @categories = Category.all
     search = params[:title_search]
-    @news = apply_scopes(News).all.title_search(search).paginate(page: params[:page], per_page: 3)
+    @news = apply_scopes(News).ordered.search(search).paginate(page: params[:page], per_page: 3)
     flash.now[:alert] = t('.alert') if @news.empty?
+    respond_to :js, :html
   end
 
   def show
