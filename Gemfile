@@ -11,6 +11,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'devise-async'
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'fog'
+gem 'fog-aws'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 gem 'haml'
@@ -38,6 +40,7 @@ gem 'will_paginate', '~> 3.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.8'
