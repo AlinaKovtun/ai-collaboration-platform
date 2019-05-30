@@ -54,6 +54,11 @@ class NewsController < ApplicationController
     end
   end
 
+  def user_news
+    @user = User.find(params[:id])
+    @news = News.where(user_id: params[:id]).paginate(page: params[:page], per_page: 5)
+  end
+
   private
 
   def news_params

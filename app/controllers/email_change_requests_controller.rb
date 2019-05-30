@@ -12,6 +12,7 @@ class EmailChangeRequestsController < ApplicationController
   end
 
   def create
+    @user = current_user
     if current_user.valid_password?(params[:email_change_request][:current_password]) \
        && @email_change_request.save
 

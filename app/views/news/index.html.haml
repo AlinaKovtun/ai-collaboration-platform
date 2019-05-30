@@ -1,5 +1,5 @@
-.container
-  .row.justify-content-center.mt-4
+.container.p-0
+  .row.justify-content-center.mt-4.p-0
     .col-lg-7
       %h3
         = render 'selector'
@@ -12,6 +12,6 @@
         = link_to t('news.links.recent'), news_index_path(ordered_by_views: false), remote: true,
           id: 'most-popular', class: 'ml-2'
       #news
-        = render 'news'
+        = render @news
     = render 'aside_bar'
   = will_paginate @news

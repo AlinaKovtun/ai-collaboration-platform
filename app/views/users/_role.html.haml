@@ -1,4 +1,4 @@
-.item
+.form-check.col-xl-3
   = check_box_tag 'by_roles[]',
     role.id,
     params.key?(:by_roles) ? params[:by_roles].include?(role.id.to_s) : false,

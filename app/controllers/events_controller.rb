@@ -45,6 +45,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def user_events
+    @user = User.find(params[:id])
+    @events = Event.where(user_id: params[:id]).paginate(page: params[:page], per_page: 6)
+  end
+
   private
 
   def set_event

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       get :edit_password
     end
 
+    get '/users/:id/news', to: 'news#user_news', as: :user_news
+    get '/users/:id/events', to: 'events#user_events', as: :user_events
     get :approve, to: 'email_change_requests#approve'
     resources :email_change_requests
   end

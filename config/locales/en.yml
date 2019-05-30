@@ -174,6 +174,8 @@ en:
       account: 'Account'
       email: 'Email'
       profile: 'Profile'
+      news: 'News'
+      events: 'Events'
     user:
       edit: 'Edit'
       submit: 'Submit'
