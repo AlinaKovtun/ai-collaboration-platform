@@ -40,6 +40,10 @@ class User < ApplicationRecord
     end
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def self.from_omniauth(auth)
     find_or_create_by(email: auth.info.email) do |user|
       user.first_name = auth.info.first_name
