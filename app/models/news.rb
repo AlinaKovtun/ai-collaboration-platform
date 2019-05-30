@@ -14,13 +14,7 @@ class News < ApplicationRecord
   scope :ordered_by_views, -> { order(views: :desc) }
   scope :by_categories, ->(category) { where(category: category) }
   scope :ordered, -> { order(created_at: :desc) }
-
-<<<<<<< HEAD
   scope :search, ->(search) { where('title ILIKE lower(?)', "%#{search}%") }
-=======
-  scope :title_search, lambda { |title_search|
-    where('title ILIKE lower(?)', "%#{title_search}%")
-  }
 
   aasm column: 'state' do
     state :draft, initial: true
@@ -45,5 +39,4 @@ class News < ApplicationRecord
       transitions from: %i[published approved draft], to: :archived
     end
   end
->>>>>>> create migrations
 end

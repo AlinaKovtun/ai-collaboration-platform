@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
     t.integer "views", default: 0
     t.string "state"
+    t.integer "category_id"
     t.string "image"
     t.index ["created_at"], name: "index_news_on_created_at"
     t.index ["user_id"], name: "index_news_on_user_id"

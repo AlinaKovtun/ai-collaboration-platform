@@ -34,8 +34,8 @@ RailsAdmin.config do |config|
       field :state, :state do
         filterable true
       end
-      field :event, :state
     end
+
     state(
       events: {
         reject: 'btn-danger',
@@ -45,7 +45,7 @@ RailsAdmin.config do |config|
         archive: 'btn-warning'
       },
       states: {
-        draft: 'label-important',
+        draft: 'label-warning',
         approved: 'label-success',
         rejected: 'label-warning',
         published: 'label-success',
@@ -55,7 +55,7 @@ RailsAdmin.config do |config|
     )
   end
 
-  config.model 'Events' do
+  config.model 'Event' do
     list do
       filters %i[title description state cost]
       field :title do
@@ -64,23 +64,24 @@ RailsAdmin.config do |config|
       field :description do
         filterable true
       end
+      field :state, :state do
+        filterable true
+      end
       field :event_start do
         filterable true
       end
       field :event_end do
         filterable true
       end
-      field :state, :state do
-        filterable true
-      end
       field :cost do
         filterable true
       end
     end
+
     state(
       events: {
         reject: 'btn-danger',
-        reverify: 'btn-warning',
+        # reverify: 'btn-warning',
         approve: 'btn-success',
         sheduled: 'btn-success',
         past: 'btn-warning',
