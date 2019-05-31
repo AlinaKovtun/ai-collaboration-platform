@@ -1,14 +1,16 @@
-var myFunc = function(obj, hideArea, toggleArea) {
-    $(obj).click(function(){
+document.addEventListener('turbolinks:load', function(){
+    $("button#add-reply").click(function(){
     thisComment = $(this).parent();
     commentId = $(this).data('comment-id');
-    thisComment.find(hideArea+commentId).hide();
-    thisComment.find(toggleArea+commentId).toggle();
+    thisComment.find("#edit_area_" + commentId).hide();
+    thisComment.find("#reply_area_" + commentId).toggle();
   });
-};
 
-document.addEventListener('turbolinks:load', function(){
-    myFunc("button#add-reply", "#edit_area_", "#reply_area_");
-    myFunc("button#comment-edit", "#reply_area_", "#edit_area_");
+    $("button#comment-edit").click(function(){
+    thisComment = $(this).parent();
+    commentId = $(this).data('comment-id');
+    thisComment.find("#reply_area_" + commentId).hide();
+    thisComment.find("#edit_area_" + commentId).toggle();
+  });
   }
 );
