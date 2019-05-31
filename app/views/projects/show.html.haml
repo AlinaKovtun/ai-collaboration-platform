@@ -1,0 +1,33 @@
+.projects-page
+  .container.pt-5.pb-5
+    %section
+      .row
+        .col-md-8
+          .card.mb-4
+            = image_tag @project.image_url, class: 'img-fluid'
+          .card
+            .card-body.p-4
+              %p.h2.my-4
+                = @project.name
+              %p.mb-2
+                = @project.description
+              .justify-content-center.mt-4
+                .user-short-info
+                  .thumbnail-social-icon.mr-2
+                    = image_tag @project.author.avatar_url
+                  %p.ml-2.mb-1
+                    %b
+                      = @project.author.first_name
+                      = @project.author.last_name
+                  %p.m-0
+                    = @project.created_at.to_date
+          .card.mb-4.mt-4
+            .card-body
+              %h3
+                = t('projects.participants')
+              .errors.text-danger.mb-1
+              .participants
+                = render 'project_participants/show', project: @project
+              = render 'project_participants/form'
+        .col-md-4
+          = render 'card_tasks'

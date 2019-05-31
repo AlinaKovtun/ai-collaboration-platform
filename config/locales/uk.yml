@@ -203,3 +203,32 @@ uk:
       blank: 'Пароль не може бути пустим'
   links:
     sign_in_with: 'Увійти за допомогою'
+  projects:
+    form:
+      image: 'Зображення'
+      name: 'Назва'
+      submit: 'Створити проект'
+      description: 'Опис'
+    new:
+      new_project: 'Новий проект'
+    edit:
+      edit_project: 'Редагувати проект'
+    create:
+      notice: 'Проект успішно створений'
+      alert: 'Проект не створений'
+    update:
+      notice: 'Проект оновлений'
+      alert: 'Проект не оновлений'
+    destroy:
+      notice: 'Проект видалений'
+      alert: 'Проект не видалений'
+    participants: 'Учасники:'
+  project_participants:
+    add_participant: 'Додати учасника'
+    remove_participant: 'Видалити учасника'
+    create:
+      notice: 'Учасник доданий'
+      alert: 'Учасник вже існує'
+    destroy:
+      notice: 'Учасник видалений'
+      alert: 'Учасник не видалений'

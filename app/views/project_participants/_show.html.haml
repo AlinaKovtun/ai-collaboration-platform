@@ -1,0 +1,8 @@
+- project.reload.project_participants.each do |project_participant|
+  %p
+    = project_participant.user.first_name
+    %b
+      = project_participant.role.name
+    = link_to t('project_participants.remove_participant'),
+      project_participant_path(project, project_participant),
+      method: :delete, class: 'remove-participant', remote: true

@@ -70,6 +70,21 @@ RSpec.describe User, type: :model do
       association = described_class.reflect_on_association(:news)
       expect(association.macro).to eq :has_many
     end
+
+    it 'has_many project participants' do
+      association = described_class.reflect_on_association(:project_participants)
+      expect(association.macro).to eq :has_many
+    end
+
+    it 'has_many owned projects' do
+      association = described_class.reflect_on_association(:owned_projects)
+      expect(association.macro).to eq :has_many
+    end
+
+    it 'has many projects through project participants' do
+      have_many(:projects).through(:project_participants)
+    end
+
     it 'has_and_belongs_to_many news' do
       association = described_class.reflect_on_association(:roles)
       expect(association.macro).to eq :has_and_belongs_to_many

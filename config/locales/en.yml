@@ -199,3 +199,32 @@ en:
       blank: 'Can`t be blank'
   links:
     sign_in_with: 'Sign in with'
+  projects:
+    form:
+      image: 'Image'
+      name: 'Name'
+      submit: 'Create Project'
+      description: 'Description'
+    new:
+      new_project: 'New Project'
+    edit:
+      edit_project: 'Edit Project'
+    create:
+      notice: 'Project successfully created'
+      alert: 'Project was not created'
+    update:
+      notice: 'Project successfully updated'
+      alert: 'Project was not updated'
+    destroy:
+      notice: 'Project successfully destroyed'
+      alert: 'Project was not destroyed'
+    participants: 'Participants:'
+  project_participants:
+    add_participant: 'Add Participant'
+    remove_participant: 'Remove Participant'
+    create:
+      notice: 'Participant successfully added'
+      alert: 'Participant exists'
+    destroy:
+      notice: 'Participant was successfully destroyed'
+      alert: 'Participant was not destroyed'

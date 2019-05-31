@@ -14,6 +14,9 @@ Rails.application.routes.draw do
         registrations: 'devise_overrides/registrations'
       }
     resources :users
+    resources :projects do
+      resources :project_participants, as: 'participants'
+    end
     root to: 'news#index'
     resources :categories
     resources :events
