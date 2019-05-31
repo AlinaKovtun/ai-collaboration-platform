@@ -83,8 +83,8 @@
               = t ('events.show.attendees')
             = @event.participants.count
           %h4.text-left.mt-2.mb-2
-            = t ('events.show.question')
             - unless current_user && current_user == @event.user
+              = t ('events.show.question')
               - if @event.participants.find_by(id: current_user.id)
                 = link_to t('events.show.ans_no'), unsubscribe_event_path(@event), method: :post,
                   class: 'btn btn-outline-dark mt-0'
