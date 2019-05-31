@@ -34,8 +34,8 @@ class TasksController < ApplicationController
       redirect_to @project
     else
       render 'edit'
+    end
   end
-end
 
   private
 
@@ -50,5 +50,4 @@ end
   def find_project
     @project = Project.find(params[:project_id])
   end
-
 end
