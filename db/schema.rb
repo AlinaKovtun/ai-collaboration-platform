@@ -77,6 +77,13 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "events_participants", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_events_participants_on_event_id"
+    t.index ["user_id"], name: "index_events_participants_on_user_id"
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "title"
     t.text "short_information"
@@ -86,8 +93,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.datetime "updated_at", null: false
     t.integer "views", default: 0
     t.boolean "approved", default: false
-    t.string "image"
     t.integer "category_id"
+    t.string "image"
     t.index ["created_at"], name: "index_news_on_created_at"
     t.index ["user_id"], name: "index_news_on_user_id"
   end
@@ -129,15 +136,15 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.text "about_me"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.text "about_me"
     t.datetime "remember_created_at"
     t.boolean "approved", default: false
     t.string "avatar"
@@ -150,6 +157,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
   add_foreign_key "comments", "users"
   add_foreign_key "email_change_requests", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "events_participants", "events"
+  add_foreign_key "events_participants", "users"
   add_foreign_key "news", "categories"
   add_foreign_key "news", "users"
   add_foreign_key "project_participants", "projects"

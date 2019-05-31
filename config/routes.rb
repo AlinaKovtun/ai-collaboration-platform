@@ -19,17 +19,21 @@ Rails.application.routes.draw do
     end
     root to: 'news#index'
     resources :categories
-    resources :events
     resources :users do
       get :update_password
       patch :update_password
       get :edit_password
     end
-
     get '/users/:id/news', to: 'news#user_news', as: :user_news
     get '/users/:id/events', to: 'events#user_events', as: :user_events
     get :approve, to: 'email_change_requests#approve'
     resources :email_change_requests
+    resources :events do
+      member do
+        post :subscribe
+        post :unsubscribe
+      end
+    end
   end
 
   devise_for :users, only: :omniauth_callbacks, controllers:
