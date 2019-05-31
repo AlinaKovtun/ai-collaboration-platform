@@ -16,28 +16,28 @@ class Event < ApplicationRecord
 
   aasm column: 'state' do
     state :draft, initial: true
-    state :approved
     state :rejected
     state :sheduled
     state :past
     state :archived
 
-    event :approve do
-      transitions from: [:draft], to: :approved
-    end
     event :reject do
       transitions from: [:draft], to: :rejected
     end
-    event :sheduled do
-      transitions from: [:approved], to: :sheduled
+    event :shedule do
+      transitions from: [:draft], to: :sheduled
     end
     event :past do
-      transitions from: [:sheduled], to: :past
+      transitions from: [:sheduled], to: :past, guard: :past?
     end
     event :archive do
-      transitions from: %i[sheduled approved draft], to: :archived
+      transitions from: %i[sheduled draft], to: :archived
     end
   end
+  #
+  # def past?
+  #   event_end_is_past_date
+  # end
 
   private
 

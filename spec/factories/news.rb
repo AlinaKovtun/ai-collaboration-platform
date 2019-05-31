@@ -6,7 +6,13 @@ FactoryBot.define do
     body { 'body' }
     short_information { 'short_information' }
     category
-    state { 'published' }
+
+    trait :draft do
+      state { 'draft' }
+    end
+    trait :published do
+      state { 'published' }
+    end
     user
   end
 end

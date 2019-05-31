@@ -18,25 +18,21 @@ class News < ApplicationRecord
 
   aasm column: 'state' do
     state :draft, initial: true
-    state :approved
     state :rejected
     state :published
     state :archived
 
-    event :approve do
-      transitions from: [:draft], to: :approved
-    end
     event :reject do
       transitions from: [:draft], to: :rejected
     end
     event :publish do
-      transitions from: [:approved], to: :published
+      transitions from: [:draft], to: :published
     end
     event :unpublish do
       transitions from: [:published], to: :draft
     end
     event :archive do
-      transitions from: %i[published approved draft], to: :archived
+      transitions from: %i[published draft], to: :archived
     end
   end
 end

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe News, type: :model do
-  let(:news) { build(:news) }
+  let(:news) { create(:news, :draft) }
 
   describe 'Validations' do
     context 'when title is empty' do
@@ -46,6 +46,20 @@ RSpec.describe News, type: :model do
     it 'belongs_to user' do
       association = described_class.reflect_on_association(:user).macro
       expect(association).to eq :belongs_to
+    end
+  end
+
+  describe 'State Machine' do
+    it 'should move through the steps of the state machine properly' do
+      expect(news).to have_state(:draft)
+      expect(news).to allow_event :publish
+      expect(news).to allow_event :reject
+      expect(news).to transition_from(:draft).to(:published).on_event(:publish)
+      expect(news).to have_state(:published)
+      expect(news).to allow_event :unpublish
+      expect(news).to allow_event :archive
+      expect(news).to transition_from(:published).to(:archived).on_event(:archive)
+      expect(news).to have_state(:archived)
     end
   end
 end

@@ -10,7 +10,7 @@ class NewsController < ApplicationController
   def index
     @categories = Category.all
     search = params[:title_search]
-    @news = apply_scopes(News).ordered.search(search).paginate(page: params[:page], per_page: 3)
+    @news = apply_scopes(News).published.ordered.search(search).paginate(page: params[:page], per_page: 3)
     flash.now[:alert] = t('.alert') if @news.empty?
     respond_to :js, :html
   end
@@ -41,17 +41,15 @@ class NewsController < ApplicationController
   def update
     if @news.update(news_params)
       redirect_to @news, notice: t('.notice')
+      @news.update_attributes(state: 'draft')
     else
       render 'edit', alert: t('.alert')
     end
   end
 
   def destroy
-    if @news.destroy
-      redirect_to news_index_path, notice: t('.notice')
-    else
-      redirect_to news_index_path, alert: t('.alert')
-    end
+    @news.update_attributes(state: 'archived')
+    redirect_to news_index_path, notice: t('.notice')
   end
 
   def user_news

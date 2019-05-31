@@ -39,14 +39,12 @@ RailsAdmin.config do |config|
     state(
       events: {
         reject: 'btn-danger',
-        approve: 'btn-success',
         publish: 'btn-success',
         unpublish: 'btn-warning',
         archive: 'btn-warning'
       },
       states: {
         draft: 'label-warning',
-        approved: 'label-success',
         rejected: 'label-warning',
         published: 'label-success',
         archived: 'label-important'
@@ -81,15 +79,12 @@ RailsAdmin.config do |config|
     state(
       events: {
         reject: 'btn-danger',
-        # reverify: 'btn-warning',
-        approve: 'btn-success',
-        sheduled: 'btn-success',
+        shedule: 'btn-success',
         past: 'btn-warning',
         archive: 'btn-warning'
       },
       states: {
         unapproved: 'label-important',
-        approved: 'label-success',
         rejected: 'label-warning',
         sheduled: 'label-success',
         past: 'label-warning',

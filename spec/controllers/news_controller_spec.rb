@@ -11,6 +11,7 @@ RSpec.describe NewsController, type: :controller do
   before { sign_in(news.user) }
 
   describe '#index' do
+    let(:news) { create(:news, :published) }
     it 'populates an array of news' do
       get :index
       expect(assigns(:news)).to eq([news])
@@ -54,7 +55,7 @@ RSpec.describe NewsController, type: :controller do
     end
 
     context 'when params is not valid' do
-      it 'does not create a new news' do
+      it 'does not create a new :nnews' do
         post :create, params: { news: invalid_params }
         expect(News.exists?(title: invalid_params[:title])).to be_falsy
       end
@@ -108,8 +109,10 @@ RSpec.describe NewsController, type: :controller do
   describe '#destroy' do
     context 'when news id is right' do
       it 'deletes news' do
+        news.archive
         delete :destroy, params: { id: news.id }
-        expect(News.exists?(news.id)).to be_falsy
+        expect(News.exists?(news.id)).to be_truthy
+        expect(news).to have_state(:archived)
       end
     end
 

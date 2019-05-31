@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'aasm/rspec'
 require 'simplecov'
 require 'simplecov-json'
 require 'fakeredis'
