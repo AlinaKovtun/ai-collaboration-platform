@@ -8,4 +8,5 @@ class Project < ApplicationRecord
   belongs_to :author, class_name: 'User'
   has_many :project_participants, dependent: :destroy
   has_many :users, through: :project_participants
+  has_many :tasks
 end

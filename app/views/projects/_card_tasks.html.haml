@@ -1,19 +1,25 @@
-.card.mb-4
-  .card-header
-    Last tasks
-  .card-body
-    %ul.list-unstyled
-      %li.media
-        .media-body
-          %h5.mt-0.mb-1.font-weight-bold
-            List-based media object
-          Cras sit amet nibh libero, in gravida nulla (...)
-      %li.media.my-4
-        .media-body
-          %h5.mt-0.mb-1.font-weight-bold
-            List-based media object
-          Cras sit amet nibh libero, in gravida nulla (...)
-      %li.media
-        .media-body
-          %h5.mt-0.mb-1.font-weight-bold List-based media object
-          Cras sit amet nibh libero, in gravida nulla (...)
+%section.mt-4
+  .row
+    = link_to t('task.add'), new_project_task_path(@project)
+    .col-md-2
+      %table.table{ style: 'with: 100px'}
+        %thead
+          %tr
+            %th.p-1{scope: "col"} Title
+            %th.p-1{scope: "col"} Short information
+            %th.p-1{scope: "col"} Created at
+            %th.p-1{scope: "col"} Completed
+            %th.p-1{scope: "col"} Actions
+
+        %tbody
+          - @project.tasks.each do |task|
+            %tr
+              %td.p-1
+                %strong= task.title
+              %td.p-1.text-info= truncate(task.short_information)
+              %td.p-1.text-info= task.created_at.localtime.strftime("%d/%m/%Y %R")
+              %td.p-1.text-success= task.completed
+              %td.p-1{ style: 'font-size: 20px'}
+                = link_to t('task.edit_task'), edit_project_task_path(@project, task)
+                |
+                = link_to t('task.delete'), project_task_path(@project, task), method: :delete

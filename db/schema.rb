@@ -136,6 +136,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_120759) do
     t.text "short_information"
     t.datetime "created_at"
     t.boolean "completed", default: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -177,4 +179,5 @@ ActiveRecord::Schema.define(version: 2019_05_30_120759) do
   add_foreign_key "project_participants", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
+  add_foreign_key "tasks", "projects"
 end

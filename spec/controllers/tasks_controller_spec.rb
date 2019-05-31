@@ -3,6 +3,7 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
   let(:user) { create(:user) }
+  let(:project) {create(:project) }
   let(:tasks) { create(:task) }
   let(:params) { attributes_for(:task) }
   let(:invalid_params) { attributes_for(:task, title: 'a' * 201) }
@@ -11,9 +12,9 @@ RSpec.describe TasksController, type: :controller do
 
   describe '#index' do
     it 'routes /events to events#index' do
-      expect(get: '/tasks').to route_to(controller: 'tasks', action: 'index')
+      expect(get: '/project/1').to route_to(controller: 'project', action: 'index')
     end
-     it 'create an array of precent taskss' do
+     it 'create an array of precent tasks' do
       get :index
       expect(assigns(:tasks)).to eq([tasks])
     end
