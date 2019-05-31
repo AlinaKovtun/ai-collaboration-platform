@@ -2,7 +2,7 @@
 
 class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
-  before_action :authenticate_user!, except: %i[show index]
+  before_action :authenticate_user!, except: %i[show index user_events]
   before_action :set_event_subscribe, only: %i[subscribe unsubscribe]
 
   def index

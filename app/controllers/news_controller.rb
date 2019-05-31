@@ -5,7 +5,7 @@ class NewsController < ApplicationController
 
   has_scope :ordered_by_views, type: :boolean, only: %i[index]
   has_scope :by_categories, type: :array, only: %i[index]
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show user_news]
 
   def index
     @categories = Category.all
