@@ -1,7 +1,7 @@
 .container.my-border
   %strong
-    = comment.user.first_name
-    = comment.user.last_name
+    = link_to_user(comment.user)
+  = comment.created_at.localtime.strftime("%Y-%m-%d %R")
   %br
   = comment.content
   %br
