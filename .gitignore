@@ -16,4 +16,3 @@
 /coverage
 *.rdb
 /public/uploads/*
-/config/.DS_Store

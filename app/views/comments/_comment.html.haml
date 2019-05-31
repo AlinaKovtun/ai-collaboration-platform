@@ -1,6 +1,6 @@
 .container.my-border
   %strong
-    = links_helper(comment)
+    = link_to_user(comment.user)
   = comment.created_at.localtime.strftime("%Y-%m-%d %R")
   %br
   = comment.content
