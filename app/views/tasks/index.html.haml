@@ -1,0 +1,29 @@
+.container
+  .row.justify-content-center.mt-4
+    .col-lg-12
+      %h3.mb-4
+        = t('task.task')
+      .m-0.text-right.d-inline
+        %p
+          = link_to t('task.add'), new_task_path
+      .row.mb-4
+        %table.table.table-hover.table-bordered
+          %thead
+            %tr
+              %th Title
+              %th Short information
+              %th Created at
+              %th Completed
+              %th Actions
+            %tbody
+              - @tasks.each do |task|
+                %tr
+                  %td
+                    %strong= task.title
+                  %td.text-info= truncate(task.short_information)
+                  %td.text-info= task.created_at.localtime.strftime("%d/%m/%Y %R")
+                  %td.text-success= task.completed
+                  %td
+                    = link_to t('task.edit_task'), edit_task_path(task.id)
+                    |
+                    = link_to t('task.delete'), task_path(task.id), method: :delete

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_070402) do
+ActiveRecord::Schema.define(version: 2019_05_30_120759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,13 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "short_information"
+    t.datetime "created_at"
+    t.boolean "completed", default: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -148,6 +155,10 @@ ActiveRecord::Schema.define(version: 2019_05_20_070402) do
     t.datetime "remember_created_at"
     t.boolean "approved", default: false
     t.string "avatar"
+    t.string "new_email"
+    t.string "change_email_token"
+    t.datetime "change_email_at"
+    t.datetime "change_email_send_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_sent_at"], name: "index_users_on_reset_password_sent_at", unique: true
