@@ -7,8 +7,9 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+
     if @message.valid?
-      MessagesMailer.contact_us_email(@message).deliver_now
+      MessagesMailer.contact_us_email(@message.as_json).deliver_later
       redirect_to contact_us_path, notice: t('contact_us.notice')
     else
       render 'contact_us'
