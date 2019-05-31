@@ -1,0 +1,28 @@
+= form_for [@project, @task] do |form|
+  %p
+    = t('task.title')
+  %p
+    = form.text_field :title, { class: 'form-control' }
+  %ol
+    - @task.errors[:title].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('task.information')
+  %p.text-left.h5
+    = form.text_field :short_information, { class: 'form-control'}
+  %ol
+    - @task.errors[:short_information].each do |msg|
+      %li.text-danger
+        = msg
+  %p
+    = t('task.completed')
+  %p.text-left.h5
+    = form.label :completed, "Yes", :value => "true"
+    = form.radio_button :completed, true
+    = form.label :completed, "No", :value => "false"
+    = form.radio_button :completed, false, :checked => true
+  %p.text-right
+    = form.submit t('task.save'), class: 'btn btn-outline-dark'
+  %ol.text-left
+

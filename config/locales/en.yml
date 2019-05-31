@@ -13,6 +13,16 @@ en:
       create_news: 'Create News'
       events: 'Events'
       users: 'Users'
+  task:
+    task: 'Tasks:'
+    title: 'Title'
+    add: 'Add Task'
+    edit: 'Edit Task'
+    edit_task: 'Edit'
+    save: 'Save'
+    delete: 'Delete'
+    information: 'Short Information'
+    completed: 'Completed'
   news:
     links:
       recent: 'Recent'

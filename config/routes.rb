@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :users
     resources :projects do
       resources :project_participants, as: 'participants'
+      resources :tasks
     end
     root to: 'news#index'
     resources :categories
