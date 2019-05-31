@@ -156,14 +156,19 @@ uk:
       title: 'Коментарі'
       submit: 'Надіслати'
       comment_placeholder: 'Текст коментаря!'
-    comment:
+    comment_partial:
       reply_placeholder: 'Текст відповіді!'
-      submit: 'Відповісти'
+      submit: 'Надіслати'
       delete: 'Видалити'
       confirmation: 'Ви впевнені?'
+      add-reply: "Відповісти"
+      edit: "Редагувати"
     create:
       notice: 'Коментар створено!'
       alert: 'Коментар не створено!'
+    update:
+      notice: 'Коментар відредаговано!'
+      alert: 'Коментар не відредаговано!'
     destroy:
       notice: 'Коментар видалено!'
       alert: 'Коментар не видалено!'
