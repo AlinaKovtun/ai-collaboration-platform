@@ -8,6 +8,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
 module AiCollaborationPlatform
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

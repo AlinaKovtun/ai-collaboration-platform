@@ -17,3 +17,4 @@
 *.rdb
 /public/uploads/*
 .env
+ngrok
