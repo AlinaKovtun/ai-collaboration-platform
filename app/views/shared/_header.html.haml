@@ -1,7 +1,8 @@
 %nav.navbar.navbar-expand-sm.bg-light.justify-content-between
   %ul.navbar-nav
     %li.nav-item
-      = link_to t('shared.header.news'), news_index_path, class: 'nav-link'
+      %a.nav-link{ href: news_index_path }
+        = t('shared.header.news')
     %li.nav-item
       %a.nav-link{ href: events_path }
         = t('shared.header.events')

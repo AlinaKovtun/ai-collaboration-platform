@@ -23,6 +23,7 @@ en:
       share: 'Share with'
       category: 'Category'
       written_by: 'Written by'
+      created_at: 'Created at: '
     index:
       sort_by: 'Sort:'
       university_news: 'University News'

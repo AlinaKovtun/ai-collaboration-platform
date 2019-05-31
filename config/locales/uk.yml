@@ -26,6 +26,7 @@ uk:
       share: 'Поділитись'
       category: 'Категорія'
       written_by: 'Створено користувачем'
+      created_at: 'Дата створення: '
     index:
       sort_by: 'Сортувати:'
       university_news: 'Новини Університету'
