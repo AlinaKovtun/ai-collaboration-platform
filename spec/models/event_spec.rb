@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  let(:event) { build(:event) }
+  let(:event) { build(:event, :draft) }
 
   describe 'validations' do
     context "when title's data are correct" do
@@ -101,6 +101,20 @@ RSpec.describe Event, type: :model do
     it 'belongs_to user' do
       association = described_class.reflect_on_association(:user).macro
       expect(association).to eq :belongs_to
+    end
+  end
+
+  describe 'State Machine' do
+    it 'should move through the steps of the state machine properly' do
+      expect(event).to have_state(:draft)
+      expect(event).to allow_event :shedule
+      expect(event).to allow_event :reject
+      expect(event).to transition_from(:draft).to(:sheduled).on_event(:shedule)
+      expect(event).to have_state(:sheduled)
+      expect(event).to allow_event :past
+      expect(event).to allow_event :archive
+      expect(event).to transition_from(:sheduled).to(:archived).on_event(:archive)
+      expect(event).to have_state(:archived)
     end
   end
 end

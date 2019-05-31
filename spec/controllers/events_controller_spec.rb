@@ -10,6 +10,7 @@ RSpec.describe EventsController, type: :controller do
   before { sign_in(event.user) }
 
   describe '#index' do
+    let(:event) { create(:event, :sheduled) }
     it 'routes /events to events#index' do
       expect(get: '/events').to route_to(controller: 'events', action: 'index')
     end
@@ -189,8 +190,10 @@ RSpec.describe EventsController, type: :controller do
     end
     context 'when id is correct' do
       it 'deletes event from database' do
+        event.archive
         delete :destroy, params: { id: event.id }
-        expect(Event.exists?(event.id)).to be_falsy
+        expect(Event.exists?(event.id)).to be_truthy
+        expect(event).to have_state(:archived)
       end
     end
 

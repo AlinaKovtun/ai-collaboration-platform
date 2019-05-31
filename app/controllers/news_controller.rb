@@ -9,8 +9,7 @@ class NewsController < ApplicationController
 
   def index
     @categories = Category.all
-    search = params[:title_search]
-    @news = apply_scopes(News).published.ordered.search(search).paginate(page: params[:page], per_page: 3)
+    @news = find_news
     flash.now[:alert] = t('.alert') if @news.empty?
     respond_to :js, :html
   end
@@ -58,6 +57,12 @@ class NewsController < ApplicationController
   end
 
   private
+
+  def find_news
+    search = params[:title_search]
+    @news = apply_scopes(News).published.ordered.search(search).paginate(page: params[:page],
+                                                                         per_page: 3)
+  end
 
   def news_params
     params.require(:news).permit(:title, :short_information, :body, :image, :category_id)

@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
 
   def index
-    @events = Event.upcoming_events
+    @events = Event.sheduled
   end
 
   def show
@@ -32,17 +32,15 @@ class EventsController < ApplicationController
   def update
     if @event.update(event_params)
       redirect_to @event, notice: t('.notice')
+      @event.update_attributes(state: 'draft')
     else
       render 'edit', alert: t('.alert')
     end
   end
 
   def destroy
-    if @event.destroy
-      redirect_to events_path, notice: t('.notice')
-    else
-      redirect_to events_path, alert: t('.alert')
-    end
+    @event.update_attributes(state: 'archived')
+    redirect_to events_path, notice: t('.notice')
   end
 
   def user_events

@@ -8,6 +8,12 @@ FactoryBot.define do
     event_end { Time.now + 1.week + 2.hours }
     cost { 0 }
     venue { 'Lviv' }
+    trait :draft do
+      state { 'draft' }
+    end
+    trait :sheduled do
+      state { 'sheduled' }
+    end
     user
   end
 end

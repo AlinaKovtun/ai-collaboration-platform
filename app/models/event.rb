@@ -28,16 +28,12 @@ class Event < ApplicationRecord
       transitions from: [:draft], to: :sheduled
     end
     event :past do
-      transitions from: [:sheduled], to: :past, guard: :past?
+      transitions from: [:sheduled], to: :past
     end
     event :archive do
-      transitions from: %i[sheduled draft], to: :archived
+      transitions from: %i[sheduled past draft], to: :archived
     end
   end
-  #
-  # def past?
-  #   event_end_is_past_date
-  # end
 
   private
 
