@@ -2,10 +2,7 @@
   %h1.mb-3
     = t ('users.edit.profile')
   .row
-    .col-md-8.col-xl-12
-      .card
-        .card-header
-          %h5.card-title.mb-0
-            = t ('users.edit.profile')
-        .card-body
-          = render 'form', user: @user
+    .col-md-5.col-xl-3
+      = render 'menu', user: @user
+    .col-md-7.col-xl-9
+      = render 'form', user: @user

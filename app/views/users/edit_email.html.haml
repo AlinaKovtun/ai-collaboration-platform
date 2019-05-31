@@ -2,7 +2,7 @@
   %h1.mb-3
     = t ('users.edit.setting')
   .row
-    .col-md-5.col-xl-4
-      = render 'menu'
-    .col-md-7.col-xl-8
+    .col-md-5.col-xl-3
+      = render 'menu', user: @user
+    .col-md-7.col-xl-9
       = render 'email'

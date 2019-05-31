@@ -6,20 +6,5 @@
       .m-0.text-right.d-inline
         %p
           = link_to t('events.index.create'), new_event_path
-
-
       .row.mb-4
-        - @events.each do |event|
-          .col-md-4.mb-4
-            .event-img.mb-2
-              %img{ src: 'https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg' }
-            %h4.m-0.d-inline
-              %strong
-                = event.title
-            %p.mt-2.mb-2
-              %em
-                = event.event_start.strftime('%d %b %Y')
-            %p.text-dark.mb-1
-              = truncate(strip_tags(event.description.html_safe), length: 200)
-            %h6.m-0.text-dark
-              = link_to t('news.links.read_more'), event_path(event)
+        = render @events

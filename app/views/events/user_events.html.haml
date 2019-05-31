@@ -1,0 +1,15 @@
+.container.p-0
+  %h1.mb-3
+    = t ('users.edit.profile')
+  .row
+    .col-md-5.col-xl-3
+      = render 'users/menu', user: @user
+    .col-md-7.col-xl-9
+      .card
+        .card-header
+          %h5.card-title.mb-0
+            = t ('users.edit.events')
+        .card-body
+          .row.mb-6
+            = render @events.upcoming_events
+          = will_paginate @events

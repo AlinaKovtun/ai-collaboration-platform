@@ -178,6 +178,8 @@ uk:
       account: 'Акаунт'
       email: 'Email'
       profile: 'Профіль'
+      news: 'Новини'
+      events: 'Події'
     user:
       edit: 'Редаугвати'
       submit: 'Застосувати'

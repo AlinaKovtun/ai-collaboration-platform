@@ -1,18 +1,20 @@
-.row
-  = form_tag('news#index', method: "get", id: "category_search", class: 'filter') do
-    - @categories.each do |category|
-      .item
+= form_tag('news#index', method: "get", id: "category_search", class: 'filter') do
+  .col-sm-12
+    .search
+      .input-group.mb-3
+        = text_field_tag  :title_search,
+          params[:search],
+          placeholder:  t('news.search.field'),
+          class: "form-control"
+        .input-group-append
+          %button.btn.btn-outline-secondary{ type: 'submit' }
+            = t ('news.selector.button')
+  %br
+  - @categories.each do |category|
+    .item
+      .form-check.col-xl-3
         = check_box_tag 'by_categories[]',
           category.id,
           params.key?(:by_categories) ? params[:by_categories].include?(category.id.to_s) : false,
           id: category.name, class: 'box'
         = label_tag category.name
-    = button_tag( t('news.selector.button'), class: "btn btn-primary")
-    %br
-    .col-sm-12
-      .search
-        %i.fa.fa-search{ "aria-hidden" => "true" }
-        = text_field_tag  :title_search,
-          params[:search],
-          placeholder:  t('news.search.field'),
-          class: "form-control"
