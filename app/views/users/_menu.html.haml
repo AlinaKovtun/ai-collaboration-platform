@@ -8,7 +8,7 @@
     - unless user.news.blank?
       %a.list-group-item.list-group-item-action{ href: user_news_path(user.id) }
         = t ('users.edit.news')
-    - unless user.events.blank?
+    - unless user.created_events.blank?
       %a.list-group-item.list-group-item-action{ href: user_events_path(user.id) }
         = t ('users.edit.events')
     - if current_user.id == user.id
